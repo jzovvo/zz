@@ -1,9 +1,10 @@
 # ZZ 
 
-[![NPM version](https://img.shields.io/npm/v/@jyunzn/zz?style=plastic)](https://www.npmjs.com/package/@jyunzn/zz) 
-[![GITHUB LICENSE](https://img.shields.io/github/license/jyunzn/zz?style=plastic)](https://www.npmjs.com/package/@jyunzn/zz)
-[![NPM size](https://img.shields.io/bundlephobia/min/@jyunzn/zz?style=plastic)](https://www.npmjs.com/~jyunzn)
-[![GITHUB issues](https://img.shields.io/github/issues/jyunzn/zz?color=yellow&style=plastic)](https://github.com/jyunzn/zz/issues)
+[![NPM version](https://img.shields.io/npm/v/@jyunzn/zz?color=red&style=plastic)](https://www.npmjs.com/package/@jyunzn/zz) 
+[![GITHUB LICENSE](https://img.shields.io/github/license/jyunzn/zz?color=orange&style=plastic)](https://github.com/jyunzn/zz/blob/master/LICENSE)
+[![NPM size](https://img.shields.io/bundlephobia/min/@jyunzn/zz?color=yellow&style=plastic)](https://www.npmjs.com/package/@jyunzn/zz)
+[![GITHUB issues](https://img.shields.io/github/issues/jyunzn/zz?color=green&style=plastic)](https://github.com/jyunzn/zz/issues)
+[![GITHUB TOP LAN](https://img.shields.io/github/languages/top/jyunzn/zz?color=blue&style=plastic)](https://github.com/jyunzn/zz)
 
 
 `zz is a javascript calendar library that runs on the browser.`
