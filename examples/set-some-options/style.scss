@@ -1,0 +1,29 @@
+/*! Base */
+@import 
+  '../../src/view/scss/base/reset';
+
+/*! Helper */
+@import 
+  '../../src/view/scss/helper/var',
+  '../../src/view/scss/helper/fn',
+  '../../src/view/scss/helper/mixin';
+
+
+/*! Component */
+@import
+  '../../src/view/scss/components/btns',
+  '../../src/view/scss/components/month';
+
+/*! Layout */
+@import 
+  '../../src/view/scss/layout/base';
+
+/*! cmz */
+.container {
+  .prev-btn.p_btn1 {
+    left: 100px;
+  }
+  .next-btn.n_btn1 {
+    right: 100px;
+  }
+}
