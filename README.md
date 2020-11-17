@@ -1,15 +1,15 @@
-# ZZ 
+# ZZ
 
-[![NPM version](https://img.shields.io/npm/v/@jyunzn/zz?color=red&style=plastic)](https://www.npmjs.com/package/@jyunzn/zz) 
+[![NPM version](https://img.shields.io/npm/v/@jyunzn/zz?color=red&style=plastic)](https://www.npmjs.com/package/@jyunzn/zz)
 [![GITHUB LICENSE](https://img.shields.io/github/license/jyunzn/zz?color=orange&style=plastic)](https://github.com/jyunzn/zz/blob/master/LICENSE)
 [![NPM size](https://img.shields.io/bundlephobia/min/@jyunzn/zz?color=yellow&style=plastic)](https://www.npmjs.com/package/@jyunzn/zz)
 [![GITHUB issues](https://img.shields.io/github/issues/jyunzn/zz?color=green&style=plastic)](https://github.com/jyunzn/zz/issues)
 [![GITHUB TOP LAN](https://img.shields.io/github/languages/top/jyunzn/zz?color=blue&style=plastic)](https://github.com/jyunzn/zz)
 
-
 `zz is a javascript calendar library that runs on the browser.`
 
 ## Table of Contents
+
 - [Features](#features)
 - [Installation](#installation)
 - [Example](#example)
@@ -23,14 +23,15 @@
   - [usage](#usage)
   - [plugin list](#plugin-list)
 
-
 ## Features
+
 - Compare before switching months
 - **Only manipulate the DOM with differences**
 - Provides many **customization options** and **life cycle** functions
 - Use **plug-in mode** to maintain the scalability of this library, and have the effect of importing on demand
 
 ## Installation
+
 ### npm
 
 ```bash
@@ -40,16 +41,17 @@ npm install @jyunzn/zz
 - **commonJS**
 
   ```javascript
-  const zz = require('@jyunzn/zz')
+  const zz = require("@jyunzn/zz");
   ```
 
 - **ES module**
 
   ```javascript
-  import zz from '@jyunzn/zz'
+  import zz from "@jyunzn/zz";
   ```
 
 ### CDN
+
 - **unpkg**
 
   ```html
@@ -67,21 +69,21 @@ npm install @jyunzn/zz
 ```html
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <!-- step1. import the module -->
-  <script src="https://unpkg.com/@jyunzn/zz"></script>
-</head>
-<body>
-  <!-- step2. Create a container -->
-  <div class="caledar"></div>
-  <script>
-    // step3. call zz function and mount into the container
-    //        If you want to use custom options, 
-    //        you can set it in the first parameter in the zz function
-    zz(/* {
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- step1. import the module -->
+    <script src="https://unpkg.com/@jyunzn/zz"></script>
+  </head>
+  <body>
+    <!-- step2. Create a container -->
+    <div class="caledar"></div>
+    <script>
+      // step3. call zz function and mount into the container
+      //        If you want to use custom options,
+      //        you can set it in the first parameter in the zz function
+      zz(/* {
 
       // Set options, such as
 
@@ -112,9 +114,9 @@ npm install @jyunzn/zz
       onMounted: () => { console.log('onMounted') },
       onBeforeUnmount: () => { console.log('onBeforeUnmount') },
       onUnmounted: () => { console.log('onUnmounted') },
-    } */).mount('.caledar')
-  </script>
-</body>
+    } */).mount(".caledar");
+    </script>
+  </body>
 </html>
 ```
 
@@ -125,70 +127,62 @@ npm install @jyunzn/zz
 - All customizable class name settings
 - **If you need to set more than two class names, please separate them with spaces**, such as `'apple banana'`
 
-option             | default  
--------------------|-------------------
-cls_ymContainer    | `'ym-container'`
-cls_monthWrap      | `'month-wrap'`
-cls_monthHeader    | `'month-header'`
-cls_monthContent   | `'month-content'`
-cls_weekMarkWrap   | `'week-mark-wrap'`
-cls_weekMark       | `'week-mark'`
-cls_w4Content      | `'w-4'`
-cls_w5Content      | `'w-5'`
-cls_w6Content      | `'w-6'`
-cls_year           | `'year'`
-cls_month          | `'month'`
-cls_week           | `'week'`
-cls_date           | `'date'`
-cls_empFDate       | `'empty-f'`
-cls_empBDate       | `'empty-b'`
-cls_passYear       | `'pass-y'`
-cls_passMonth      | `'pass-m'`
-cls_passWeek       | `'pass-w'`
-cls_passDate       | `'pass-d'`
-cls_passEmpFDate   | `'pass-emp-f'`
-cls_passEmpBDate   | `'pass-emp-b'`
-cls_unPassYear     | `'unpass-y'`
-cls_unPassMonth    | `'unpass-m'`
-cls_unPassWeek     | `'unpass-w'`
-cls_unPassDate     | `'unpass-d'`
-cls_unPassEmpFDate | `'unpass-emp-f'`
-cls_unPassEmpBDate | `'unpass-emp-b'`
-cls_curDate        | `'cur-d'`
-cls_curMonth       | `'cur-m'`
-cls_curYear        | `'cur-y'`
-cls_curWeek        | `'cur-w'` 
+| option             | default            |
+| ------------------ | ------------------ |
+| cls_ymContainer    | `'ym-container'`   |
+| cls_monthWrap      | `'month-wrap'`     |
+| cls_monthHeader    | `'month-header'`   |
+| cls_monthContent   | `'month-content'`  |
+| cls_weekMarkWrap   | `'week-mark-wrap'` |
+| cls_weekMark       | `'week-mark'`      |
+| cls_w4Content      | `'w-4'`            |
+| cls_w5Content      | `'w-5'`            |
+| cls_w6Content      | `'w-6'`            |
+| cls_year           | `'year'`           |
+| cls_month          | `'month'`          |
+| cls_week           | `'week'`           |
+| cls_date           | `'date'`           |
+| cls_empFDate       | `'empty-f'`        |
+| cls_empBDate       | `'empty-b'`        |
+| cls_passYear       | `'pass-y'`         |
+| cls_passMonth      | `'pass-m'`         |
+| cls_passWeek       | `'pass-w'`         |
+| cls_passDate       | `'pass-d'`         |
+| cls_passEmpFDate   | `'pass-emp-f'`     |
+| cls_passEmpBDate   | `'pass-emp-b'`     |
+| cls_unPassYear     | `'unpass-y'`       |
+| cls_unPassMonth    | `'unpass-m'`       |
+| cls_unPassWeek     | `'unpass-w'`       |
+| cls_unPassDate     | `'unpass-d'`       |
+| cls_unPassEmpFDate | `'unpass-emp-f'`   |
+| cls_unPassEmpBDate | `'unpass-emp-b'`   |
+| cls_curDate        | `'cur-d'`          |
+| cls_curMonth       | `'cur-m'`          |
+| cls_curYear        | `'cur-y'`          |
+| cls_curWeek        | `'cur-w'`          |
 
 ### tag options
 
 - All customizable label settings
 - **value:** `HTML Tag | SVG Tag | Custom Element Name( The name must be kebab-case )`
 
-option           | default
------------------|-----------------
-tag_ymContainer  | `'div'`
-tag_monthWrap    | `'div'`
-tag_monthHeader  | `'div'`
-tag_monthContent | `'div'`
-tag_weekMarkWrap | `'ul'`
-tag_weekMark     | `'li'`
-tag_year         | `'span'`
-tag_month        | `'span'`
-tag_week         | `'ul'`
-tag_date         | `'li'`
-tag_empFDate     | `'li'`
-tag_empBDate     | `'li'`
+| option           | default  |
+| ---------------- | -------- |
+| tag_ymContainer  | `'div'`  |
+| tag_monthWrap    | `'div'`  |
+| tag_monthHeader  | `'div'`  |
+| tag_monthContent | `'div'`  |
+| tag_weekMarkWrap | `'ul'`   |
+| tag_weekMark     | `'li'`   |
+| tag_year         | `'span'` |
+| tag_month        | `'span'` |
+| tag_week         | `'ul'`   |
+| tag_date         | `'li'`   |
+| tag_empFDate     | `'li'`   |
+| tag_empBDate     | `'li'`   |
 
 ### other options
 
-<style>
-  .my-tbody {
-    text-align: left;
-  }
-  .my-tbody th {
-    font-weight: 400;
-  }
-</style>
 <table>
   <thead>
     <tr>
@@ -197,7 +191,7 @@ tag_empBDate     | `'li'`
       <th>description</th>
     </tr>
   </thead>
-  <tbody class="my-tbody">
+  <tbody style="text-align: left;">
     <tr>
       <td>cmz_quan</td>
       <td><code>1</code></td>
@@ -317,7 +311,7 @@ tag_empBDate     | `'li'`
         <ul>
           <li><strong>Type:</strong> <code>Array&lt;array&gt;</code></li>
           <li>
-            <p><strong>Syntax:</strong> <code>[[Tag name, Tag props, Children], [switch Btn Setting], ...]]</code></p>
+            <p><strong>Syntax:</strong> <code>[[Tag name, Tag props, Children], [switch Btn Setting], ...]</code></p>
             <ul>
               <li>
                 <p><strong>Tag name:</strong></p>
@@ -376,7 +370,6 @@ tag_empBDate     | `'li'`
 
 The life cycle architecture refers to [VueJS](https://vuejs.org/), so the trigger timing is similar to the life cycle of [VueJS](https://vuejs.org/v2/guide/instance.html#Lifecycle-Diagram)
 
-
 <table>
   <thead>
     <tr>
@@ -384,7 +377,7 @@ The life cycle architecture refers to [VueJS](https://vuejs.org/), so the trigge
       <th>description</th>
     </tr>
   </thead>
-  <tbody class="my-tbody">
+  <tbody style="text-align: left;">
     <tr>
       <td>onBeforeCreate</td>
       <td>
@@ -546,30 +539,30 @@ The life cycle architecture refers to [VueJS](https://vuejs.org/), so the trigge
 
 The zz function will return an object with mount and unmount methods
 
-function | description
----------|----
-mount    | Mount the dom created by the zz function to the specified container, Accepts a selectors parameter
-unmount  | Unmount the calendar mounted in the container
+| function | description                                                                                        |
+| -------- | -------------------------------------------------------------------------------------------------- |
+| mount    | Mount the dom created by the zz function to the specified container, Accepts a selectors parameter |
+| unmount  | Unmount the calendar mounted in the container                                                      |
 
 ## Plugins
 
-- The plug-in mode of zz also refers to [VueJS](https://vuejs.org/v2/guide/plugins.html), 
-- The zz object has a use function. The plugin can be installed by passing the plugin into the use parameter. 
+- The plug-in mode of zz also refers to [VueJS](https://vuejs.org/v2/guide/plugins.html),
+- The zz object has a use function. The plugin can be installed by passing the plugin into the use parameter.
 - **The plug-in object must have an install method**
 
 ### usage
 
 ```javascript
-const plugin = { install() {} }
-zz.use(plugin)
+const plugin = { install() {} };
+zz.use(plugin);
 ```
 
 ### plugin list
 
-plugin  | description
---------|---
-[zzsper](https://github.com/jyunzn/zzsper) | **ZZ Single Picker**, provides the function of <strong>selecting a single day</strong>
-zzrper  | **ZZ Range Picker**, not yet 😩😩😩
+| plugin                                     | description                                                                            |
+| ------------------------------------------ | -------------------------------------------------------------------------------------- |
+| [zzsper](https://github.com/jyunzn/zzsper) | **ZZ Single Picker**, provides the function of <strong>selecting a single day</strong> |
+| zzrper                                     | **ZZ Range Picker**, not yet 😩😩😩                                                    |
 
 ## License
 

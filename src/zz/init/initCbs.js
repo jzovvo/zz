@@ -1,14 +1,14 @@
-import { initCallback } from '../../utils'
+import { initCallback } from '../utils'
 
 function getDefaultCbs() {
   return {
-    onPreved: [], 
+    onPreved: [],
     onNexted: [],
     onBeforeDomBeReset: [],
     onDomBeReseted: [],
     onBeforeDomBeAssyAtResetDom: [],
     onDomBeAssyAtResetDom: [],
-  
+
     onBeforeCreate: [],
     onCreated: [],
     onBeforeMount: [],

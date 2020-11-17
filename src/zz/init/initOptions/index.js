@@ -1,5 +1,5 @@
 import { dCls, dMNames, dWMark, dQuan, dTags, dSwBtns, dSwBtnStep, dYMPosition } from './default'
-import { isObj, isArr, isNaN, dateStrToDateObj, getDateInfo, isTag, tsEnumToObj, deepcopy, initClass } from '../../../utils'
+import { isObj, isArr, isNaN, dateStrToDateObj, getDateInfo, isTag, tsEnumToObj, deepcopy, initClass } from '../../utils'
 
 // UTILS
 function initCmzName(dN, cN) {
@@ -27,7 +27,6 @@ function handleCmzName(options, key, defaultNames) {
   return names
 }
 
-
 function initTags(options) {
   const oTags = {}
   for (let tagKey in dTags) {
@@ -53,29 +52,9 @@ function initWMarks(options) {
   return handleCmzName(options, 'cmz_wMarks', dWMark)
 }
 
-function initYM(options) {
-  const ymS = initYMStart(options)
-  const ymPos = initYMPosition(options)
-  return { ymS, ymPos }
-}
-
-function initYMStart(options) {
-  const { cmz_ymStart } = options
-  let ymDObj
-  if (cmz_ymStart !== undefined) {
-    ymDObj = dateStrToDateObj(cmz_ymStart)
-    ymDObj = ymDObj ? ymDObj : new Date()
-    delete options.cmz_ymStart
-  } else {
-    ymDObj = new Date()
-  }
-
-  return getDateInfo(ymDObj)
-}
-
 function initYMPosition(options) {
   const { cmz_ymPos } = options
-  
+
   const accept = ['my', 'ym']
   if (cmz_ymPos) {
     let pos;
@@ -88,8 +67,26 @@ function initYMPosition(options) {
     delete options.cmz_ymPos
     return pos
   }
-  
+
   return dYMPosition
+}
+
+function initYMStart(options) {
+  const { cmz_ymStart } = options
+  let ymDObj
+  if (cmz_ymStart !== undefined) {
+    ymDObj = dateStrToDateObj(cmz_ymStart) || new Date()
+    delete options.cmz_ymStart
+  } else {
+    ymDObj = new Date()
+  }
+  return getDateInfo(ymDObj)
+}
+
+function initYM(options) {
+  const ymS = initYMStart(options)
+  const ymPos = initYMPosition(options)
+  return { ymS, ymPos }
 }
 
 function initIgnore(options) {
@@ -143,25 +140,6 @@ function initYNames(options) {
   return null
 }
 
-function initSwBtns(options) {
-  const { cmz_swBtns } = options
-  if (cmz_swBtns !== undefined) {
-    let btns;
-    if (cmz_swBtns === null) {
-      btns = null
-    } else if (isArr(cmz_swBtns)) {
-      btns = filterCompilanceBtns(cmz_swBtns)
-      btns = btns.length === 0 ? deepcopy(dSwBtns) : btns 
-    } else {
-      btns = deepcopy(dSwBtns)
-    }
-    delete options.cmz_swBtns
-    return btns
-  }
-  return deepcopy(dSwBtns)
-}
-
-
 function btnRules(btn) {
   return (
     isArr(btn) &&
@@ -187,6 +165,7 @@ function handleBtnArrayChild(children) {
           return true
         }
       }
+      return false
     })
 }
 
@@ -216,11 +195,29 @@ function filterCompilanceBtns(btns) {
         }
         return true
       }
+      return false
     })
 }
 
-export function initOptions(options = {}) {
+function initSwBtns(options) {
+  const { cmz_swBtns } = options
+  if (cmz_swBtns !== undefined) {
+    let btns;
+    if (cmz_swBtns === null) {
+      btns = null
+    } else if (isArr(cmz_swBtns)) {
+      btns = filterCompilanceBtns(cmz_swBtns)
+      btns = btns.length === 0 ? deepcopy(dSwBtns) : btns
+    } else {
+      btns = deepcopy(dSwBtns)
+    }
+    delete options.cmz_swBtns
+    return btns
+  }
+  return deepcopy(dSwBtns)
+}
 
+export function initOptions(options = {}) {
   const cls = initClass(options, dCls)
   const tags = initTags(options)
   const mNames = initMNames(options)
@@ -233,5 +230,4 @@ export function initOptions(options = {}) {
   const swBtns = initSwBtns(options)
 
   return { ...options, ...cls, ...tags, mNames, wMarks, ...ym, ignore, quan, yNames, swBtns }
-
 }

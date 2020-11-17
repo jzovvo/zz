@@ -1,6 +1,5 @@
 import { isObj, isArr } from './common'
 
-
 export const addClass = (dom, cls) => {
   if (!isArr(cls)) return false
   for (let i = 0; i < cls.length; i++) {
@@ -35,7 +34,6 @@ export const createDom = (tag = 'span', content = '', cls = [], attrs = {}) => {
   return dom
 }
 
-
 /**
  * @param interval 區間 -1 | 0 | 1
  * @param classes [-1 class, 0 class, 1 class]
@@ -52,7 +50,6 @@ export function getClassByInterval(interval, classes) {
   }
 }
 
-
 export function isTag(tag) {
   if (typeof tag === 'string') {
     const searchLv1Tag = 'div,span,i,img,ul,li,p,button'
@@ -64,7 +61,7 @@ export function isTag(tag) {
       'polygon,polyline,rect,switch,symbol,text,textpath,tspan,use,view'
 
     // MDN said custom element names must contain a hyphen.
-    const customEl = /^[a-zA-Z]+-[a-zA-Z]+(-[a-zA-Z]+)*$/ 
+    const customEl = /^[a-zA-Z]+-[a-zA-Z]+(-[a-zA-Z]+)*$/
     const sourceTags = [searchLv1Tag, searchLv2Tag, svgTag, searchLv3Tag, searchLv4Tag]
     return sourceTags.some(sourceTag => sourceTag.includes(tag)) || customEl.test(tag)
   }

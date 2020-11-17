@@ -1,7 +1,7 @@
 /*!
- * zz v0.0.0-alpha.1
+ * zz v0.0.0-alpha.2
  * (c) 2020 Jyunzn
- * Released under the MIT License.
+ * Released under the MIT License
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -58,7 +58,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => /* binding */ _arrayWithoutHoles
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_helpers_esm_arrayLikeToArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/arrayLikeToArray */ "./node_modules/@babel/runtime/helpers/esm/arrayLikeToArray.js");
-
+;
 function _arrayWithoutHoles(arr) {
   if (Array.isArray(arr)) return (0,_babel_runtime_helpers_esm_arrayLikeToArray__WEBPACK_IMPORTED_MODULE_0__.default)(arr);
 }
@@ -81,7 +81,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_helpers_esm_setPrototypeOf__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/setPrototypeOf */ "./node_modules/@babel/runtime/helpers/esm/setPrototypeOf.js");
 /* harmony import */ var _babel_runtime_helpers_esm_isNativeReflectConstruct__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/isNativeReflectConstruct */ "./node_modules/@babel/runtime/helpers/esm/isNativeReflectConstruct.js");
-
+;
 
 function _construct(Parent, args, Class) {
   if ((0,_babel_runtime_helpers_esm_isNativeReflectConstruct__WEBPACK_IMPORTED_MODULE_1__.default)()) {
@@ -245,7 +245,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_esm_iterableToArray__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/iterableToArray */ "./node_modules/@babel/runtime/helpers/esm/iterableToArray.js");
 /* harmony import */ var _babel_runtime_helpers_esm_unsupportedIterableToArray__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/esm/unsupportedIterableToArray */ "./node_modules/@babel/runtime/helpers/esm/unsupportedIterableToArray.js");
 /* harmony import */ var _babel_runtime_helpers_esm_nonIterableSpread__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/esm/nonIterableSpread */ "./node_modules/@babel/runtime/helpers/esm/nonIterableSpread.js");
-
+;
 
 
 
@@ -270,7 +270,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => /* binding */ _unsupportedIterableToArray
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_helpers_esm_arrayLikeToArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/arrayLikeToArray */ "./node_modules/@babel/runtime/helpers/esm/arrayLikeToArray.js");
-
+;
 function _unsupportedIterableToArray(o, minLen) {
   if (!o) return;
   if (typeof o === "string") return (0,_babel_runtime_helpers_esm_arrayLikeToArray__WEBPACK_IMPORTED_MODULE_0__.default)(o, minLen);
@@ -279,476 +279,6 @@ function _unsupportedIterableToArray(o, minLen) {
   if (n === "Map" || n === "Set") return Array.from(o);
   if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return (0,_babel_runtime_helpers_esm_arrayLikeToArray__WEBPACK_IMPORTED_MODULE_0__.default)(o, minLen);
 }
-
-/***/ }),
-
-/***/ "./src/utils/common.js":
-/*!*****************************!*\
-  !*** ./src/utils/common.js ***!
-  \*****************************/
-/*! namespace exports */
-/*! export callCallbacks [provided] [no usage info] [missing usage info prevents renaming] */
-/*! export deepcopy [provided] [no usage info] [missing usage info prevents renaming] */
-/*! export gcArr [provided] [no usage info] [missing usage info prevents renaming] */
-/*! export gcObj [provided] [no usage info] [missing usage info prevents renaming] */
-/*! export initCallback [provided] [no usage info] [missing usage info prevents renaming] */
-/*! export isArr [provided] [no usage info] [missing usage info prevents renaming] */
-/*! export isFunc [provided] [no usage info] [missing usage info prevents renaming] */
-/*! export isNaN [provided] [no usage info] [missing usage info prevents renaming] */
-/*! export isObj [provided] [no usage info] [missing usage info prevents renaming] */
-/*! export judgeInterval [provided] [no usage info] [missing usage info prevents renaming] */
-/*! export tsEnumToObj [provided] [no usage info] [missing usage info prevents renaming] */
-/*! other exports [not provided] [no usage info] */
-/*! runtime requirements: __webpack_require__.r, __webpack_exports__, __webpack_require__.d, __webpack_require__.* */
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "isObj": () => /* binding */ isObj,
-/* harmony export */   "isFunc": () => /* binding */ isFunc,
-/* harmony export */   "isArr": () => /* binding */ isArr,
-/* harmony export */   "isNaN": () => /* binding */ isNaN,
-/* harmony export */   "judgeInterval": () => /* binding */ judgeInterval,
-/* harmony export */   "gcObj": () => /* binding */ gcObj,
-/* harmony export */   "gcArr": () => /* binding */ gcArr,
-/* harmony export */   "tsEnumToObj": () => /* binding */ tsEnumToObj,
-/* harmony export */   "deepcopy": () => /* binding */ deepcopy,
-/* harmony export */   "initCallback": () => /* binding */ initCallback,
-/* harmony export */   "callCallbacks": () => /* binding */ callCallbacks
-/* harmony export */ });
-var isObj = function isObj(obj) {
-  return Object.prototype.toString.call(obj) === '[object Object]';
-};
-var isFunc = function isFunc(func) {
-  return Object.prototype.toString.call(func) === '[object Function]';
-};
-var isArr = function isArr(arr) {
-  return Object.prototype.toString.call(arr) === '[object Array]';
-};
-var isNaN = function isNaN(input) {
-  return typeof input === 'number' && input !== input;
-};
-/**
- * @description 判斷狀態區間
- * @param refP 參考點
- * @param point 判斷點
- * @return -1: 左, 0: 當前, 1: 右
- */
-
-function judgeInterval(refP, point) {
-  if (refP < point) {
-    return -1;
-  } else if (refP === point) {
-    return 0;
-  } else if (refP > point) {
-    return 1;
-  } else {
-    throw new Error('judgeInterval params is wrong');
-  }
-}
-function gcObj(obj) {
-  for (var key in obj) {
-    delete obj[key];
-  }
-}
-function gcArr(arr) {
-  for (var i = 0; i < arr.length; i++) {
-    arr[i] = null;
-  }
-}
-function tsEnumToObj(obj) {
-  var tmp = {};
-
-  for (var key in obj) {
-    tmp[tmp[key] = obj[key]] = key;
-  }
-
-  return tmp;
-}
-function deepcopy(target) {
-  if (isObj(target)) {
-    var obj = {};
-
-    for (var key in target) {
-      obj[key] = deepcopy(target[key]);
-    }
-
-    return obj;
-  } else if (isArr(target)) {
-    var arr = [];
-
-    for (var i = 0; i < target.length; i++) {
-      var val = target[i];
-      arr.push(deepcopy(val));
-    }
-
-    return arr;
-  } else {
-    return target;
-  }
-}
-function initCallback(cbObj, cbs, del) {
-  for (var key in cbs) {
-    var cbArr = cbs[key];
-    var cb = cbObj[key];
-
-    if (cb) {
-      if (isFunc(cb)) {
-        cbArr.push(cb);
-      }
-
-      if (del) {
-        delete cbObj[key];
-      }
-    }
-  }
-}
-function callCallbacks(cbs, self) {
-  for (var _len = arguments.length, options = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
-    options[_key - 2] = arguments[_key];
-  }
-
-  for (var i = 0; i < cbs.length; i++) {
-    var cb = cbs[i];
-    cb.call.apply(cb, [self].concat(options));
-  }
-}
-
-/***/ }),
-
-/***/ "./src/utils/date.js":
-/*!***************************!*\
-  !*** ./src/utils/date.js ***!
-  \***************************/
-/*! namespace exports */
-/*! export addMonth [provided] [no usage info] [missing usage info prevents renaming] */
-/*! export dateStrToDateObj [provided] [no usage info] [missing usage info prevents renaming] */
-/*! export fixYMAfterAdd [provided] [no usage info] [missing usage info prevents renaming] */
-/*! export fixYMAfterSub [provided] [no usage info] [missing usage info prevents renaming] */
-/*! export getDateInfo [provided] [no usage info] [missing usage info prevents renaming] */
-/*! export getDays [provided] [no usage info] [missing usage info prevents renaming] */
-/*! export getFirstDay [provided] [no usage info] [missing usage info prevents renaming] */
-/*! export getLastDay [provided] [no usage info] [missing usage info prevents renaming] */
-/*! export getWeek [provided] [no usage info] [missing usage info prevents renaming] */
-/*! export subMonth [provided] [no usage info] [missing usage info prevents renaming] */
-/*! other exports [not provided] [no usage info] */
-/*! runtime requirements: __webpack_require__, __webpack_require__.r, __webpack_exports__, __webpack_require__.d, __webpack_require__.* */
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "dateStrToDateObj": () => /* binding */ dateStrToDateObj,
-/* harmony export */   "getDateInfo": () => /* binding */ getDateInfo,
-/* harmony export */   "getDays": () => /* binding */ getDays,
-/* harmony export */   "getFirstDay": () => /* binding */ getFirstDay,
-/* harmony export */   "getLastDay": () => /* binding */ getLastDay,
-/* harmony export */   "getWeek": () => /* binding */ getWeek,
-/* harmony export */   "fixYMAfterAdd": () => /* binding */ fixYMAfterAdd,
-/* harmony export */   "fixYMAfterSub": () => /* binding */ fixYMAfterSub,
-/* harmony export */   "addMonth": () => /* binding */ addMonth,
-/* harmony export */   "subMonth": () => /* binding */ subMonth
-/* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_construct__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/construct */ "./node_modules/@babel/runtime/helpers/esm/construct.js");
-/* harmony import */ var _babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/toConsumableArray */ "./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js");
-
-
-var dateStrToDateObj = function dateStrToDateObj(dateStr) {
-  if (typeof dateStr !== 'string' || !dateStr.includes('-')) {
-    return null;
-  }
-
-  var dateStrArr = dateStr.split('-').map(function (str) {
-    return str * 1;
-  });
-  dateStrArr[1] -= 1;
-
-  var dObj = (0,_babel_runtime_helpers_esm_construct__WEBPACK_IMPORTED_MODULE_0__.default)(Date, (0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__.default)(dateStrArr));
-
-  if (isNaN(dObj.getTime())) {
-    return null;
-  }
-
-  return dObj;
-};
-var getDateInfo = function getDateInfo(dObj) {
-  var year = dObj.getFullYear();
-  var month = dObj.getMonth() + 1;
-  var date = dObj.getDate();
-  return {
-    year: year,
-    month: month,
-    date: date
-  };
-};
-
-function isLeapYear(year) {
-  return year % 4 === 0 && year % 100 !== 0 || year % 400 === 0;
-}
-
-var getDays = function getDays(year, month) {
-  var day30 = [4, 6, 8, 9, 11];
-  var day31 = [1, 3, 5, 7, 8, 10, 12];
-  var days = day31.includes(month) ? 31 : day30.includes(month) ? 30 : isLeapYear(year) ? 29 : 28;
-  return days;
-};
-var getFirstDay = function getFirstDay(dObj) {
-  return dObj.getDay();
-};
-var getLastDay = function getLastDay(firstDay, days) {
-  return (firstDay + days - 1) % 7;
-};
-var getWeek = function getWeek(day) {
-  return Math.ceil(day / 7);
-};
-var fixYMAfterAdd = function fixYMAfterAdd(year, month) {
-  if (month > 12) {
-    year += 1;
-    month -= 12;
-  }
-
-  return {
-    year: year,
-    month: month
-  };
-};
-var fixYMAfterSub = function fixYMAfterSub(year, month) {
-  if (month < 1) {
-    year -= 1;
-    month += 12;
-  }
-
-  return {
-    year: year,
-    month: month
-  };
-};
-var addMonth = function addMonth(ym, number) {
-  var year = ym.year,
-      month = ym.month;
-  month += number;
-  var fixYM = fixYMAfterAdd(year, month);
-  ym.year = fixYM.year;
-  ym.month = fixYM.month;
-};
-var subMonth = function subMonth(ym, number) {
-  var year = ym.year,
-      month = ym.month;
-  month -= number;
-  var fixYM = fixYMAfterSub(year, month);
-  ym.year = fixYM.year;
-  ym.month = fixYM.month;
-};
-
-/***/ }),
-
-/***/ "./src/utils/dom.js":
-/*!**************************!*\
-  !*** ./src/utils/dom.js ***!
-  \**************************/
-/*! namespace exports */
-/*! export addClass [provided] [no usage info] [missing usage info prevents renaming] */
-/*! export createDom [provided] [no usage info] [missing usage info prevents renaming] */
-/*! export getClassByInterval [provided] [no usage info] [missing usage info prevents renaming] */
-/*! export initClass [provided] [no usage info] [missing usage info prevents renaming] */
-/*! export isTag [provided] [no usage info] [missing usage info prevents renaming] */
-/*! export parentAppendChildren [provided] [no usage info] [missing usage info prevents renaming] */
-/*! export removeClass [provided] [no usage info] [missing usage info prevents renaming] */
-/*! export setAttrs [provided] [no usage info] [missing usage info prevents renaming] */
-/*! other exports [not provided] [no usage info] */
-/*! runtime requirements: __webpack_require__, __webpack_require__.r, __webpack_exports__, __webpack_require__.d, __webpack_require__.* */
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "addClass": () => /* binding */ addClass,
-/* harmony export */   "removeClass": () => /* binding */ removeClass,
-/* harmony export */   "setAttrs": () => /* binding */ setAttrs,
-/* harmony export */   "createDom": () => /* binding */ createDom,
-/* harmony export */   "getClassByInterval": () => /* binding */ getClassByInterval,
-/* harmony export */   "isTag": () => /* binding */ isTag,
-/* harmony export */   "parentAppendChildren": () => /* binding */ parentAppendChildren,
-/* harmony export */   "initClass": () => /* binding */ initClass
-/* harmony export */ });
-/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./common */ "./src/utils/common.js");
-
-var addClass = function addClass(dom, cls) {
-  if (!(0,_common__WEBPACK_IMPORTED_MODULE_0__.isArr)(cls)) return false;
-
-  for (var i = 0; i < cls.length; i++) {
-    var clsname = cls[i];
-    dom.classList.add(clsname);
-  }
-};
-var removeClass = function removeClass(dom, cls) {
-  if (!(0,_common__WEBPACK_IMPORTED_MODULE_0__.isArr)(cls)) return false;
-
-  for (var i = 0; i < cls.length; i++) {
-    var clsname = cls[i];
-    dom.classList.remove(clsname);
-  }
-};
-var setAttrs = function setAttrs(dom, attrs) {
-  if (!(0,_common__WEBPACK_IMPORTED_MODULE_0__.isObj)(attrs)) return false;
-
-  for (var key in attrs) {
-    var val = attrs[key];
-
-    if (typeof val === 'string') {
-      dom.setAttribute(key, val);
-    }
-  }
-};
-var createDom = function createDom() {
-  var tag = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'span';
-  var content = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
-  var cls = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
-  var attrs = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
-  var dom = document.createElement(tag);
-  dom.textContent = content;
-  cls.length && addClass(dom, cls);
-  (0,_common__WEBPACK_IMPORTED_MODULE_0__.isObj)(attrs) && setAttrs(dom, attrs);
-  return dom;
-};
-/**
- * @param interval 區間 -1 | 0 | 1
- * @param classes [-1 class, 0 class, 1 class]
- */
-
-function getClassByInterval(interval, classes) {
-  if (interval === 1) {
-    return classes[2];
-  } else if (interval === -1) {
-    return classes[0];
-  } else if (interval === 0) {
-    return classes[1];
-  } else {
-    throw new Error('getClassByInterval params is wrong');
-  }
-}
-function isTag(tag) {
-  if (typeof tag === 'string') {
-    var searchLv1Tag = 'div,span,i,img,ul,li,p,button';
-    var searchLv2Tag = 'article,aside,footer,header,h1,h2,h3,h4,h5,h6,nav,section,figcaption,figure,canvas,script,form,input,select,textarea';
-    var searchLv3Tag = 'html,body,base,head,link,meta,style,title,dd,dl,dt,ol,picture,address,main,audio,video,time,caption,col,colgroup,table,thead,tbody,td,th,tr';
-    var searchLv4Tag = 'hgroup,hr,pre,a,b,abbr,bdi,bdo,br,cite,code,data,dfn,em,kbd,mark,q,rp,rt,rtc,ruby,s,samp,small,strong,sub,sup,u,var,wbr,area,map,track,embed,object,param,source,noscript,del,ins,datalist,fieldset,label,legend,meter,optgroup,option,output,progress,details,dialog,menu,menuitem,summary,content,element,shadow,template,blockquote,iframe,tfoot';
-    var svgTag = 'svg,animate,circle,clippath,cursor,defs,desc,ellipse,filter,font-face,' + 'foreignObject,g,glyph,image,line,marker,mask,missing-glyph,path,pattern,' + 'polygon,polyline,rect,switch,symbol,text,textpath,tspan,use,view'; // MDN said custom element names must contain a hyphen.
-
-    var customEl = /^[a-zA-Z]+-[a-zA-Z]+(-[a-zA-Z]+)*$/;
-    var sourceTags = [searchLv1Tag, searchLv2Tag, svgTag, searchLv3Tag, searchLv4Tag];
-    return sourceTags.some(function (sourceTag) {
-      return sourceTag.includes(tag);
-    }) || customEl.test(tag);
-  }
-
-  return false;
-}
-function parentAppendChildren(parent, children) {
-  for (var i = 0; i < children.length; i++) {
-    var child = children[i];
-    parent.appendChild(child);
-  }
-} // INIT
-
-function initClass(options, dCls) {
-  var clsObj = {};
-
-  for (var clsKey in dCls) {
-    var cls = options[clsKey];
-
-    if (cls !== undefined) {
-      if (typeof cls !== 'string') {
-        cls = dCls[clsKey];
-      }
-
-      delete options[clsKey];
-    } else {
-      cls = dCls[clsKey];
-    }
-
-    clsObj[clsKey] = cls ? cls.split(' ') : [];
-  }
-
-  return clsObj;
-}
-
-/***/ }),
-
-/***/ "./src/utils/index.js":
-/*!****************************!*\
-  !*** ./src/utils/index.js ***!
-  \****************************/
-/*! namespace exports */
-/*! export addClass [provided] [no usage info] [missing usage info prevents renaming] -> ./src/utils/dom.js .addClass */
-/*! export addMonth [provided] [no usage info] [missing usage info prevents renaming] -> ./src/utils/date.js .addMonth */
-/*! export callCallbacks [provided] [no usage info] [missing usage info prevents renaming] -> ./src/utils/common.js .callCallbacks */
-/*! export createDom [provided] [no usage info] [missing usage info prevents renaming] -> ./src/utils/dom.js .createDom */
-/*! export dateStrToDateObj [provided] [no usage info] [missing usage info prevents renaming] -> ./src/utils/date.js .dateStrToDateObj */
-/*! export deepcopy [provided] [no usage info] [missing usage info prevents renaming] -> ./src/utils/common.js .deepcopy */
-/*! export fixYMAfterAdd [provided] [no usage info] [missing usage info prevents renaming] -> ./src/utils/date.js .fixYMAfterAdd */
-/*! export fixYMAfterSub [provided] [no usage info] [missing usage info prevents renaming] -> ./src/utils/date.js .fixYMAfterSub */
-/*! export gcArr [provided] [no usage info] [missing usage info prevents renaming] -> ./src/utils/common.js .gcArr */
-/*! export gcObj [provided] [no usage info] [missing usage info prevents renaming] -> ./src/utils/common.js .gcObj */
-/*! export getClassByInterval [provided] [no usage info] [missing usage info prevents renaming] -> ./src/utils/dom.js .getClassByInterval */
-/*! export getDateInfo [provided] [no usage info] [missing usage info prevents renaming] -> ./src/utils/date.js .getDateInfo */
-/*! export getDays [provided] [no usage info] [missing usage info prevents renaming] -> ./src/utils/date.js .getDays */
-/*! export getFirstDay [provided] [no usage info] [missing usage info prevents renaming] -> ./src/utils/date.js .getFirstDay */
-/*! export getLastDay [provided] [no usage info] [missing usage info prevents renaming] -> ./src/utils/date.js .getLastDay */
-/*! export getWeek [provided] [no usage info] [missing usage info prevents renaming] -> ./src/utils/date.js .getWeek */
-/*! export initCallback [provided] [no usage info] [missing usage info prevents renaming] -> ./src/utils/common.js .initCallback */
-/*! export initClass [provided] [no usage info] [missing usage info prevents renaming] -> ./src/utils/dom.js .initClass */
-/*! export isArr [provided] [no usage info] [missing usage info prevents renaming] -> ./src/utils/common.js .isArr */
-/*! export isFunc [provided] [no usage info] [missing usage info prevents renaming] -> ./src/utils/common.js .isFunc */
-/*! export isNaN [provided] [no usage info] [missing usage info prevents renaming] -> ./src/utils/common.js .isNaN */
-/*! export isObj [provided] [no usage info] [missing usage info prevents renaming] -> ./src/utils/common.js .isObj */
-/*! export isTag [provided] [no usage info] [missing usage info prevents renaming] -> ./src/utils/dom.js .isTag */
-/*! export judgeInterval [provided] [no usage info] [missing usage info prevents renaming] -> ./src/utils/common.js .judgeInterval */
-/*! export parentAppendChildren [provided] [no usage info] [missing usage info prevents renaming] -> ./src/utils/dom.js .parentAppendChildren */
-/*! export removeClass [provided] [no usage info] [missing usage info prevents renaming] -> ./src/utils/dom.js .removeClass */
-/*! export setAttrs [provided] [no usage info] [missing usage info prevents renaming] -> ./src/utils/dom.js .setAttrs */
-/*! export subMonth [provided] [no usage info] [missing usage info prevents renaming] -> ./src/utils/date.js .subMonth */
-/*! export tsEnumToObj [provided] [no usage info] [missing usage info prevents renaming] -> ./src/utils/common.js .tsEnumToObj */
-/*! other exports [not provided] [no usage info] */
-/*! runtime requirements: __webpack_require__, __webpack_exports__, __webpack_require__.d, __webpack_require__.r, __webpack_require__.* */
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "callCallbacks": () => /* reexport safe */ _common__WEBPACK_IMPORTED_MODULE_0__.callCallbacks,
-/* harmony export */   "deepcopy": () => /* reexport safe */ _common__WEBPACK_IMPORTED_MODULE_0__.deepcopy,
-/* harmony export */   "gcArr": () => /* reexport safe */ _common__WEBPACK_IMPORTED_MODULE_0__.gcArr,
-/* harmony export */   "gcObj": () => /* reexport safe */ _common__WEBPACK_IMPORTED_MODULE_0__.gcObj,
-/* harmony export */   "initCallback": () => /* reexport safe */ _common__WEBPACK_IMPORTED_MODULE_0__.initCallback,
-/* harmony export */   "isArr": () => /* reexport safe */ _common__WEBPACK_IMPORTED_MODULE_0__.isArr,
-/* harmony export */   "isFunc": () => /* reexport safe */ _common__WEBPACK_IMPORTED_MODULE_0__.isFunc,
-/* harmony export */   "isNaN": () => /* reexport safe */ _common__WEBPACK_IMPORTED_MODULE_0__.isNaN,
-/* harmony export */   "isObj": () => /* reexport safe */ _common__WEBPACK_IMPORTED_MODULE_0__.isObj,
-/* harmony export */   "judgeInterval": () => /* reexport safe */ _common__WEBPACK_IMPORTED_MODULE_0__.judgeInterval,
-/* harmony export */   "tsEnumToObj": () => /* reexport safe */ _common__WEBPACK_IMPORTED_MODULE_0__.tsEnumToObj,
-/* harmony export */   "addMonth": () => /* reexport safe */ _date__WEBPACK_IMPORTED_MODULE_1__.addMonth,
-/* harmony export */   "dateStrToDateObj": () => /* reexport safe */ _date__WEBPACK_IMPORTED_MODULE_1__.dateStrToDateObj,
-/* harmony export */   "fixYMAfterAdd": () => /* reexport safe */ _date__WEBPACK_IMPORTED_MODULE_1__.fixYMAfterAdd,
-/* harmony export */   "fixYMAfterSub": () => /* reexport safe */ _date__WEBPACK_IMPORTED_MODULE_1__.fixYMAfterSub,
-/* harmony export */   "getDateInfo": () => /* reexport safe */ _date__WEBPACK_IMPORTED_MODULE_1__.getDateInfo,
-/* harmony export */   "getDays": () => /* reexport safe */ _date__WEBPACK_IMPORTED_MODULE_1__.getDays,
-/* harmony export */   "getFirstDay": () => /* reexport safe */ _date__WEBPACK_IMPORTED_MODULE_1__.getFirstDay,
-/* harmony export */   "getLastDay": () => /* reexport safe */ _date__WEBPACK_IMPORTED_MODULE_1__.getLastDay,
-/* harmony export */   "getWeek": () => /* reexport safe */ _date__WEBPACK_IMPORTED_MODULE_1__.getWeek,
-/* harmony export */   "subMonth": () => /* reexport safe */ _date__WEBPACK_IMPORTED_MODULE_1__.subMonth,
-/* harmony export */   "addClass": () => /* reexport safe */ _dom__WEBPACK_IMPORTED_MODULE_2__.addClass,
-/* harmony export */   "createDom": () => /* reexport safe */ _dom__WEBPACK_IMPORTED_MODULE_2__.createDom,
-/* harmony export */   "getClassByInterval": () => /* reexport safe */ _dom__WEBPACK_IMPORTED_MODULE_2__.getClassByInterval,
-/* harmony export */   "initClass": () => /* reexport safe */ _dom__WEBPACK_IMPORTED_MODULE_2__.initClass,
-/* harmony export */   "isTag": () => /* reexport safe */ _dom__WEBPACK_IMPORTED_MODULE_2__.isTag,
-/* harmony export */   "parentAppendChildren": () => /* reexport safe */ _dom__WEBPACK_IMPORTED_MODULE_2__.parentAppendChildren,
-/* harmony export */   "removeClass": () => /* reexport safe */ _dom__WEBPACK_IMPORTED_MODULE_2__.removeClass,
-/* harmony export */   "setAttrs": () => /* reexport safe */ _dom__WEBPACK_IMPORTED_MODULE_2__.setAttrs
-/* harmony export */ });
-/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./common */ "./src/utils/common.js");
-/* harmony import */ var _date__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./date */ "./src/utils/date.js");
-/* harmony import */ var _dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./dom */ "./src/utils/dom.js");
-
-
-
 
 /***/ }),
 
@@ -769,55 +299,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "assyDoms": () => /* binding */ assyDoms
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/toConsumableArray */ "./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js");
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils */ "./src/utils/index.js");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./utils */ "./src/zz/utils/index.js");
+;
 
-
-/**
- * @description assembly year month doms
- */
-
-function assyYMD(ymDs, ymCD, opts) {
-  var ymPos = opts.ymPos;
-
-  for (var y in ymDs) {
-    var ms = ymDs[y];
-
-    for (var m in ms) {
-      var mInfo = ms[m];
-      var mWD = mInfo.mWD,
-          mHD = mInfo.mHD,
-          mCD = mInfo.mCD,
-          yD = mInfo.yD,
-          mD = mInfo.mD,
-          wDs = mInfo.wDs,
-          wMD = mInfo.wMD,
-          empFDDs = mInfo.empFDDs,
-          empBDDs = mInfo.empBDDs,
-          dDs = mInfo.dDs;
-      var header = assyHeader({
-        mHD: mHD,
-        yD: yD,
-        mD: mD
-      }, ymPos);
-      var content = assyContent({
-        mCD: mCD,
-        wDs: wDs,
-        wMD: wMD,
-        empFDDs: empFDDs,
-        empBDDs: empBDDs,
-        dDs: dDs
-      });
-      var mDom = assyWrap({
-        mWD: mWD,
-        header: header,
-        content: content
-      });
-      ymCD.appendChild(mDom);
-    }
-  }
-
-  return ymCD;
-}
 
 function assyHeader(_ref, ymPos) {
   var mHD = _ref.mHD,
@@ -866,6 +350,53 @@ function assyWrap(_ref3) {
   mWD.appendChild(content);
   return mWD;
 }
+/**
+ * @description assembly year month doms
+ */
+
+
+function assyYMD(ymDs, ymCD, opts) {
+  var ymPos = opts.ymPos;
+
+  for (var y in ymDs) {
+    var ms = ymDs[y];
+
+    for (var m in ms) {
+      var mInfo = ms[m];
+      var mWD = mInfo.mWD,
+          mHD = mInfo.mHD,
+          mCD = mInfo.mCD,
+          yD = mInfo.yD,
+          mD = mInfo.mD,
+          wDs = mInfo.wDs,
+          wMD = mInfo.wMD,
+          empFDDs = mInfo.empFDDs,
+          empBDDs = mInfo.empBDDs,
+          dDs = mInfo.dDs;
+      var header = assyHeader({
+        mHD: mHD,
+        yD: yD,
+        mD: mD
+      }, ymPos);
+      var content = assyContent({
+        mCD: mCD,
+        wDs: wDs,
+        wMD: wMD,
+        empFDDs: empFDDs,
+        empBDDs: empBDDs,
+        dDs: dDs
+      });
+      var mDom = assyWrap({
+        mWD: mWD,
+        header: header,
+        content: content
+      });
+      ymCD.appendChild(mDom);
+    }
+  }
+
+  return ymCD;
+}
 
 function assyIntegrDom(doms) {
   var fg = document.createDocumentFragment();
@@ -900,8 +431,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _init__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./init */ "./src/zz/init/index.js");
 /* harmony import */ var _assembly__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./assembly */ "./src/zz/assembly.js");
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils */ "./src/utils/index.js");
-
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./utils */ "./src/zz/utils/index.js");
+;
 
 
 
@@ -943,23 +474,58 @@ function calendar(options, cbs) {
 
 /***/ }),
 
-/***/ "./src/zz/index.js":
-/*!*************************!*\
-  !*** ./src/zz/index.js ***!
-  \*************************/
+/***/ "./src/zz/global.js":
+/*!**************************!*\
+  !*** ./src/zz/global.js ***!
+  \**************************/
 /*! namespace exports */
-/*! export zz [provided] [used in main] [usage prevents renaming] */
+/*! export mixin [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export use [provided] [no usage info] [missing usage info prevents renaming] */
 /*! other exports [not provided] [no usage info] */
 /*! runtime requirements: __webpack_require__, __webpack_require__.r, __webpack_exports__, __webpack_require__.d, __webpack_require__.* */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "zz": () => /* binding */ zz
+/* harmony export */   "use": () => /* binding */ use,
+/* harmony export */   "mixin": () => /* binding */ mixin
+/* harmony export */ });
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utils */ "./src/zz/utils/index.js");
+;
+function use(plugin, plugins) {
+  if (((0,_utils__WEBPACK_IMPORTED_MODULE_0__.isObj)(plugin) || (0,_utils__WEBPACK_IMPORTED_MODULE_0__.isFunc)(plugin)) && !plugins.includes(plugin)) {
+    var install = plugin.install;
+
+    if (install && (0,_utils__WEBPACK_IMPORTED_MODULE_0__.isFunc)(install)) {
+      plugins.push(plugin);
+    }
+  }
+}
+function mixin(cbObj, mixins) {
+  cbObj && (0,_utils__WEBPACK_IMPORTED_MODULE_0__.isObj)(cbObj) && mixins.push(cbObj);
+}
+
+/***/ }),
+
+/***/ "./src/zz/index.js":
+/*!*************************!*\
+  !*** ./src/zz/index.js ***!
+  \*************************/
+/*! namespace exports */
+/*! export default [provided] [used in main] [usage prevents renaming] */
+/*! other exports [not provided] [no usage info] */
+/*! runtime requirements: __webpack_require__, __webpack_require__.r, __webpack_exports__, __webpack_require__.d, __webpack_require__.* */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => /* binding */ zz
 /* harmony export */ });
 /* harmony import */ var _calendar__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./calendar */ "./src/zz/calendar.js");
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils */ "./src/utils/index.js");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./utils */ "./src/zz/utils/index.js");
 /* harmony import */ var _init__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./init */ "./src/zz/init/index.js");
+/* harmony import */ var _global__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./global */ "./src/zz/global.js");
+;
 
 
 
@@ -980,17 +546,18 @@ function zz(option) {
 
   var cbs = (0,_init__WEBPACK_IMPORTED_MODULE_2__.initCbs)(mixins);
   var app = (0,_calendar__WEBPACK_IMPORTED_MODULE_0__.calendar)(option, cbs);
-  var mount = app.mount;
-  var unmount = app.unmount;
+  var _app = app,
+      mount = _app.mount,
+      unmount = _app.unmount;
   var parent;
 
   app.mount = function (select) {
-    var _app = app,
-        opts = _app.opts,
-        ymData = _app.ymData,
-        pointers = _app.pointers,
-        doms = _app.doms,
-        integrFg = _app.integrFg;
+    var _app2 = app,
+        opts = _app2.opts,
+        ymData = _app2.ymData,
+        pointers = _app2.pointers,
+        doms = _app2.doms,
+        integrFg = _app2.integrFg;
     (0,_utils__WEBPACK_IMPORTED_MODULE_1__.callCallbacks)(cbs.onBeforeMount, null, {
       opts: opts,
       ymData: ymData,
@@ -1009,11 +576,11 @@ function zz(option) {
   };
 
   app.unmount = function () {
-    var _app2 = app,
-        opts = _app2.opts,
-        ymData = _app2.ymData,
-        pointers = _app2.pointers,
-        doms = _app2.doms;
+    var _app3 = app,
+        opts = _app3.opts,
+        ymData = _app3.ymData,
+        pointers = _app3.pointers,
+        doms = _app3.doms;
     (0,_utils__WEBPACK_IMPORTED_MODULE_1__.callCallbacks)(cbs.onBeforeUnmount, null, {
       opts: opts,
       ymData: ymData,
@@ -1036,17 +603,11 @@ function zz(option) {
 }
 
 zz.use = function (plugin) {
-  if (((0,_utils__WEBPACK_IMPORTED_MODULE_1__.isObj)(plugin) || (0,_utils__WEBPACK_IMPORTED_MODULE_1__.isFunc)(plugin)) && !plugins.includes(plugin)) {
-    var install = plugin.install;
-
-    if (install && (0,_utils__WEBPACK_IMPORTED_MODULE_1__.isFunc)(install)) {
-      plugins.push(plugin);
-    }
-  }
+  return (0,_global__WEBPACK_IMPORTED_MODULE_3__.use)(plugin, plugins);
 };
 
-zz.mixin = function (cbObj) {
-  cbObj && (0,_utils__WEBPACK_IMPORTED_MODULE_1__.isObj)(cbObj) && mixins.push(cbObj);
+zz.mixin = function (cb) {
+  return (0,_global__WEBPACK_IMPORTED_MODULE_3__.mixin)(cb, mixins);
 };
 
 /***/ }),
@@ -1128,8 +689,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "initCbs": () => /* binding */ initCbs
 /* harmony export */ });
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../utils */ "./src/utils/index.js");
-
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils */ "./src/zz/utils/index.js");
+;
 
 function getDefaultCbs() {
   return {
@@ -1199,7 +760,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _initYMDoms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./initYMDoms */ "./src/zz/init/initDoms/initYMDoms.js");
 /* harmony import */ var _initSwBtnDoms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./initSwBtnDoms */ "./src/zz/init/initDoms/initSwBtnDoms.js");
-
+;
 
 
 function initDoms(opts, mCache) {
@@ -1230,8 +791,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "initSwBtnDoms": () => /* binding */ initSwBtnDoms
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/toConsumableArray */ "./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js");
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../utils */ "./src/utils/index.js");
-
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils */ "./src/zz/utils/index.js");
+;
 
 
 function createEl(tag, attrs, children) {
@@ -1253,7 +814,8 @@ function createEl(tag, attrs, children) {
         parent.setAttribute(key, attrs[key]);
       }
     }
-  }
+  } // eslint-disable-next-line
+
 
   handleChildren(children, parent);
   return parent;
@@ -1324,8 +886,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "initYMContainer": () => /* binding */ initYMContainer
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/toConsumableArray */ "./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js");
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../utils */ "./src/utils/index.js");
-
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils */ "./src/zz/utils/index.js");
+;
  // init O1 Empty Doms
 
 function initO1EmptyDoms(start, end, tag, cls) {
@@ -1625,7 +1187,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "initEvent": () => /* binding */ initEvent
 /* harmony export */ });
 /* harmony import */ var _switch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../switch */ "./src/zz/switch.js");
-
+;
 
 function handleSwClick(btnSet, doms, opts, ymData, pointers, cbs) {
   if (!btnSet[1]) return false;
@@ -1795,8 +1357,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
 /* harmony import */ var _babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/toConsumableArray */ "./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js");
 /* harmony import */ var _default__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./default */ "./src/zz/init/initOptions/default.js");
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../utils */ "./src/utils/index.js");
-
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils */ "./src/zz/utils/index.js");
+;
 
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
@@ -1866,30 +1428,6 @@ function initWMarks(options) {
   return handleCmzName(options, 'cmz_wMarks', _default__WEBPACK_IMPORTED_MODULE_2__.dWMark);
 }
 
-function initYM(options) {
-  var ymS = initYMStart(options);
-  var ymPos = initYMPosition(options);
-  return {
-    ymS: ymS,
-    ymPos: ymPos
-  };
-}
-
-function initYMStart(options) {
-  var cmz_ymStart = options.cmz_ymStart;
-  var ymDObj;
-
-  if (cmz_ymStart !== undefined) {
-    ymDObj = (0,_utils__WEBPACK_IMPORTED_MODULE_3__.dateStrToDateObj)(cmz_ymStart);
-    ymDObj = ymDObj ? ymDObj : new Date();
-    delete options.cmz_ymStart;
-  } else {
-    ymDObj = new Date();
-  }
-
-  return (0,_utils__WEBPACK_IMPORTED_MODULE_3__.getDateInfo)(ymDObj);
-}
-
 function initYMPosition(options) {
   var cmz_ymPos = options.cmz_ymPos;
   var accept = ['my', 'ym'];
@@ -1909,6 +1447,29 @@ function initYMPosition(options) {
   }
 
   return _default__WEBPACK_IMPORTED_MODULE_2__.dYMPosition;
+}
+
+function initYMStart(options) {
+  var cmz_ymStart = options.cmz_ymStart;
+  var ymDObj;
+
+  if (cmz_ymStart !== undefined) {
+    ymDObj = (0,_utils__WEBPACK_IMPORTED_MODULE_3__.dateStrToDateObj)(cmz_ymStart) || new Date();
+    delete options.cmz_ymStart;
+  } else {
+    ymDObj = new Date();
+  }
+
+  return (0,_utils__WEBPACK_IMPORTED_MODULE_3__.getDateInfo)(ymDObj);
+}
+
+function initYM(options) {
+  var ymS = initYMStart(options);
+  var ymPos = initYMPosition(options);
+  return {
+    ymS: ymS,
+    ymPos: ymPos
+  };
 }
 
 function initIgnore(options) {
@@ -1969,28 +1530,6 @@ function initYNames(options) {
   return null;
 }
 
-function initSwBtns(options) {
-  var cmz_swBtns = options.cmz_swBtns;
-
-  if (cmz_swBtns !== undefined) {
-    var btns;
-
-    if (cmz_swBtns === null) {
-      btns = null;
-    } else if ((0,_utils__WEBPACK_IMPORTED_MODULE_3__.isArr)(cmz_swBtns)) {
-      btns = filterCompilanceBtns(cmz_swBtns);
-      btns = btns.length === 0 ? (0,_utils__WEBPACK_IMPORTED_MODULE_3__.deepcopy)(_default__WEBPACK_IMPORTED_MODULE_2__.dSwBtns) : btns;
-    } else {
-      btns = (0,_utils__WEBPACK_IMPORTED_MODULE_3__.deepcopy)(_default__WEBPACK_IMPORTED_MODULE_2__.dSwBtns);
-    }
-
-    delete options.cmz_swBtns;
-    return btns;
-  }
-
-  return (0,_utils__WEBPACK_IMPORTED_MODULE_3__.deepcopy)(_default__WEBPACK_IMPORTED_MODULE_2__.dSwBtns);
-}
-
 function btnRules(btn) {
   return (0,_utils__WEBPACK_IMPORTED_MODULE_3__.isArr)(btn) && (0,_utils__WEBPACK_IMPORTED_MODULE_3__.isTag)(btn[0]) && ((0,_utils__WEBPACK_IMPORTED_MODULE_3__.isObj)(btn[1]) || btn[1] === null) && (typeof btn[2] === 'string' || (0,_utils__WEBPACK_IMPORTED_MODULE_3__.isArr)(btn[2]));
 }
@@ -2011,6 +1550,8 @@ function handleBtnArrayChild(children) {
         return true;
       }
     }
+
+    return false;
   });
 }
 
@@ -2041,7 +1582,31 @@ function filterCompilanceBtns(btns) {
 
       return true;
     }
+
+    return false;
   });
+}
+
+function initSwBtns(options) {
+  var cmz_swBtns = options.cmz_swBtns;
+
+  if (cmz_swBtns !== undefined) {
+    var btns;
+
+    if (cmz_swBtns === null) {
+      btns = null;
+    } else if ((0,_utils__WEBPACK_IMPORTED_MODULE_3__.isArr)(cmz_swBtns)) {
+      btns = filterCompilanceBtns(cmz_swBtns);
+      btns = btns.length === 0 ? (0,_utils__WEBPACK_IMPORTED_MODULE_3__.deepcopy)(_default__WEBPACK_IMPORTED_MODULE_2__.dSwBtns) : btns;
+    } else {
+      btns = (0,_utils__WEBPACK_IMPORTED_MODULE_3__.deepcopy)(_default__WEBPACK_IMPORTED_MODULE_2__.dSwBtns);
+    }
+
+    delete options.cmz_swBtns;
+    return btns;
+  }
+
+  return (0,_utils__WEBPACK_IMPORTED_MODULE_3__.deepcopy)(_default__WEBPACK_IMPORTED_MODULE_2__.dSwBtns);
 }
 
 function initOptions() {
@@ -2083,7 +1648,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "initPointers": () => /* binding */ initPointers
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/toConsumableArray */ "./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js");
-
+;
 function initPointers(ymCache) {
   var years = mapObjKeysToNumArr(ymCache);
   var minY = Math.min.apply(Math, (0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__.default)(years));
@@ -2129,8 +1694,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "initYMData": () => /* binding */ initYMData
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils */ "./src/utils/index.js");
-
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils */ "./src/zz/utils/index.js");
+;
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -2271,10 +1836,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
 /* harmony import */ var _babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/toConsumableArray */ "./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js");
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils */ "./src/utils/index.js");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./utils */ "./src/zz/utils/index.js");
 /* harmony import */ var _init__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./init */ "./src/zz/init/index.js");
 /* harmony import */ var _assembly__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./assembly */ "./src/zz/assembly.js");
-
+;
 
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
@@ -2307,6 +1872,63 @@ function resetClassByInterval(dom, bS, nS, classes) {
   var addCls = (0,_utils__WEBPACK_IMPORTED_MODULE_2__.getClassByInterval)(nS, classes);
   (0,_utils__WEBPACK_IMPORTED_MODULE_2__.removeClass)(dom, removeCls);
   (0,_utils__WEBPACK_IMPORTED_MODULE_2__.addClass)(dom, addCls);
+} // handle class for dates and weeks
+
+
+function handleClassForDW(dom, bMS, nMS, beforeP, nextP, classes) {
+  if (bMS !== 0 && nMS !== 0) {
+    for (var i = 0; i < dom.length; i++) {
+      var dD = dom[i];
+      resetClassByInterval(dD, bMS, nMS, classes);
+    }
+  } else if (bMS !== 0) {
+    var removeCls = (0,_utils__WEBPACK_IMPORTED_MODULE_2__.getClassByInterval)(bMS, classes);
+
+    for (var _i = 0; _i < dom.length; _i++) {
+      var _dD = dom[_i];
+      var date = _i + 1;
+      var interval = (0,_utils__WEBPACK_IMPORTED_MODULE_2__.judgeInterval)(date, nextP);
+      var addCls = (0,_utils__WEBPACK_IMPORTED_MODULE_2__.getClassByInterval)(interval, classes);
+      (0,_utils__WEBPACK_IMPORTED_MODULE_2__.removeClass)(_dD, removeCls);
+      (0,_utils__WEBPACK_IMPORTED_MODULE_2__.addClass)(_dD, addCls);
+    }
+  } else if (nMS !== 0) {
+    var _addCls = (0,_utils__WEBPACK_IMPORTED_MODULE_2__.getClassByInterval)(nMS, classes);
+
+    for (var _i2 = 0; _i2 < dom.length; _i2++) {
+      var _dD2 = dom[_i2];
+
+      var _date = _i2 + 1;
+
+      var _interval = (0,_utils__WEBPACK_IMPORTED_MODULE_2__.judgeInterval)(_date, beforeP);
+
+      var _removeCls = (0,_utils__WEBPACK_IMPORTED_MODULE_2__.getClassByInterval)(_interval, classes);
+
+      (0,_utils__WEBPACK_IMPORTED_MODULE_2__.removeClass)(_dD2, _removeCls);
+      (0,_utils__WEBPACK_IMPORTED_MODULE_2__.addClass)(_dD2, _addCls);
+    }
+  }
+}
+
+function handleContentClass(mCD, diffM, opts) {
+  var calcWs = diffM.diffResult.calcWs;
+
+  if (calcWs !== 0) {
+    var cls_w4Content = opts.cls_w4Content,
+        cls_w5Content = opts.cls_w5Content,
+        cls_w6Content = opts.cls_w6Content;
+    var nWs = diffM.nextYMCache.weeks,
+        bWs = diffM.beforeYMCache.weeks;
+    var classes = [cls_w4Content, cls_w5Content, cls_w6Content];
+    var removeCls = (0,_init__WEBPACK_IMPORTED_MODULE_3__.handleContentWeeksClass)(bWs, classes);
+    var addCls = (0,_init__WEBPACK_IMPORTED_MODULE_3__.handleContentWeeksClass)(nWs, classes);
+    (0,_utils__WEBPACK_IMPORTED_MODULE_2__.removeClass)(mCD, removeCls);
+    (0,_utils__WEBPACK_IMPORTED_MODULE_2__.addClass)(mCD, addCls);
+  }
+}
+
+function handleContentYMFlag(mCD, diffM) {
+  mCD.$_ym = diffM.nextYM;
 } // step1. diff
 
 
@@ -2330,8 +1952,8 @@ function diff(nextYMCache, beforeYMCache) {
   var calcDs = nDs - bDs;
   var calcWs = nWs - bWs;
   var statusChange = {
-    ys: nYS === bYS ? false : true,
-    ms: nMS === bMS ? false : true
+    ys: nYS !== bYS,
+    ms: nMS !== bMS
   };
   return {
     calcFD: calcFD,
@@ -2340,8 +1962,330 @@ function diff(nextYMCache, beforeYMCache) {
     calcWs: calcWs,
     statusChange: statusChange
   };
+}
+/**
+ * @param fg all yearMonthContentDom's Children By Backward
+ * @param direct click direct
+ * @param len will Be Move Dom count
+ */
+
+
+function getBeMoveDoms(fg, direct, len) {
+  var fgForBeMoveDom = document.createDocumentFragment();
+  /**
+   * @description because direct prev's be move dom is in front of all, so backward for pop it
+   */
+
+  if (direct === 'prev') {
+    fg = node2FragmentFromLast(fg);
+  }
+
+  var children = (0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__.default)(fg.children);
+
+  for (var i = 0; i < len; i++) {
+    var child = children.pop();
+    fgForBeMoveDom.appendChild(child);
+  }
+
+  return {
+    fgForBeMoveDom: fgForBeMoveDom,
+    fgForUnMoveDom: fg
+  };
+}
+
+function resetBeMoveDomsYear(mHD, diffM, opts) {
+  var yNames = opts.yNames,
+      cls_year = opts.cls_year;
+  var yD = mHD.querySelector(".".concat(cls_year[0]));
+  if (!yD) return null;
+  var ys = diffM.diffResult.statusChange.ys,
+      year = diffM.nextYM.year;
+  var yName = yNames && yNames[year] || year;
+  yD.textContent = yName;
+
+  if (ys) {
+    var cls_passYear = opts.cls_passYear,
+        cls_curYear = opts.cls_curYear,
+        cls_unPassYear = opts.cls_unPassYear;
+    var nYS = diffM.nextYMCache.ymStatus.yStatus,
+        bYS = diffM.beforeYMCache.ymStatus.yStatus;
+    var classes = [cls_passYear, cls_curYear, cls_unPassYear];
+    resetClassByInterval(yD, bYS, nYS, classes);
+  }
+
+  return yD;
+}
+
+function resetBeMoveDomsMonth(mHD, diffM, opts) {
+  var mNames = opts.mNames,
+      cls_month = opts.cls_month;
+  var mD = mHD.querySelector(".".concat(cls_month[0]));
+  if (!mD) return null;
+  var ms = diffM.diffResult.statusChange.ms,
+      month = diffM.nextYM.month;
+  var mName = mNames[month];
+  mD.textContent = mName;
+
+  if (ms) {
+    var nMS = diffM.nextYMCache.ymStatus.mStatus,
+        bMS = diffM.beforeYMCache.ymStatus.mStatus;
+    var cls_passMonth = opts.cls_passMonth,
+        cls_curMonth = opts.cls_curMonth,
+        cls_unPassMonth = opts.cls_unPassMonth;
+    var classes = [cls_passMonth, cls_curMonth, cls_unPassMonth];
+    resetClassByInterval(mD, bMS, nMS, classes);
+  }
+
+  return mD;
+}
+
+function resetBeMoveDomsEmpFDDs(mCD, diffM, opts) {
+  var cls_empFDate = opts.cls_empFDate;
+  var _diffM$diffResult = diffM.diffResult,
+      calcFD = _diffM$diffResult.calcFD,
+      ms = _diffM$diffResult.statusChange.ms;
+  var empFDDs = mCD.querySelectorAll(".".concat(cls_empFDate[0]));
+  if (!empFDDs) return null;
+  empFDDs = (0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__.default)(empFDDs);
+  var newEmpFDDs = [];
+
+  if (calcFD > 0) {
+    var ymStatus = diffM.nextYMCache.ymStatus;
+    newEmpFDDs = (0,_init__WEBPACK_IMPORTED_MODULE_3__.initEmptyFDDoms)(calcFD, ymStatus, opts);
+  } else if (calcFD < 0) {
+    for (var i = 0; i < Math.abs(calcFD); i++) {
+      empFDDs.pop();
+    }
+  }
+
+  if (ms) {
+    var nMS = diffM.nextYMCache.ymStatus.mStatus,
+        bMS = diffM.beforeYMCache.ymStatus.mStatus;
+
+    if (nMS <= 0 && bMS > 0 || nMS > 0 && bMS <= 0) {
+      var cls_passEmpFDate = opts.cls_passEmpFDate,
+          cls_unPassEmpFDate = opts.cls_unPassEmpFDate;
+      var classes = [cls_passEmpFDate, cls_passEmpFDate, cls_unPassEmpFDate];
+
+      for (var _i3 = 0; _i3 < empFDDs.length; _i3++) {
+        var empFDD = empFDDs[_i3];
+        resetClassByInterval(empFDD, bMS, nMS, classes);
+      }
+    }
+  }
+
+  return [].concat((0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__.default)(empFDDs), (0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__.default)(newEmpFDDs));
+}
+
+function resetBeMoveDomsEmpBDDs(mCD, diffM, opts) {
+  var cls_empBDate = opts.cls_empBDate;
+  var _diffM$diffResult2 = diffM.diffResult,
+      calcLD = _diffM$diffResult2.calcLD,
+      ms = _diffM$diffResult2.statusChange.ms;
+  var empBDDs = mCD.querySelectorAll(".".concat(cls_empBDate[0]));
+  if (!empBDDs) return null;
+  empBDDs = (0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__.default)(empBDDs);
+  var newEmpBDDs = [];
+
+  if (calcLD < 0) {
+    var ymStatus = diffM.nextYMCache.ymStatus;
+    newEmpBDDs = (0,_init__WEBPACK_IMPORTED_MODULE_3__.initEmptyBDDoms)(6 - Math.abs(calcLD), ymStatus, opts);
+  } else if (calcLD > 0) {
+    for (var i = 0; i < calcLD; i++) {
+      empBDDs.pop();
+    }
+  }
+
+  if (ms) {
+    var nMS = diffM.nextYMCache.ymStatus.mStatus,
+        bMS = diffM.beforeYMCache.ymStatus.mStatus;
+
+    if (nMS < 0 && bMS >= 0 || nMS >= 0 && bMS < 0) {
+      var cls_passEmpBDate = opts.cls_passEmpBDate,
+          cls_unPassEmpBDate = opts.cls_unPassEmpBDate;
+      var classes = [cls_passEmpBDate, cls_unPassEmpBDate, cls_unPassEmpBDate];
+
+      for (var _i4 = 0; _i4 < empBDDs.length; _i4++) {
+        var empBDD = empBDDs[_i4];
+        resetClassByInterval(empBDD, bMS, nMS, classes);
+      }
+    }
+  }
+
+  return [].concat((0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__.default)(empBDDs), (0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__.default)(newEmpBDDs));
+}
+
+function resetBeMoveDomsDDs(mCD, diffM, opts) {
+  var cls_date = opts.cls_date;
+  var _diffM$diffResult3 = diffM.diffResult,
+      calcDs = _diffM$diffResult3.calcDs,
+      ms = _diffM$diffResult3.statusChange.ms;
+  var dDs = mCD.querySelectorAll(".".concat(cls_date[0]));
+  if (!dDs) return null;
+  dDs = (0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__.default)(dDs);
+  var newDDs = [];
+
+  if (calcDs > 0) {
+    var bDs = diffM.beforeYMCache.days,
+        _diffM$nextYMCache = diffM.nextYMCache,
+        nDs = _diffM$nextYMCache.days,
+        ymStatus = _diffM$nextYMCache.ymStatus;
+    newDDs = (0,_init__WEBPACK_IMPORTED_MODULE_3__.initDDoms)(bDs + 1, nDs, ymStatus, opts);
+  } else if (calcDs < 0) {
+    for (var i = 0; i < Math.abs(calcDs); i++) {
+      dDs.pop();
+    }
+  }
+
+  if (ms) {
+    var _diffM$beforeYMCache$ = diffM.beforeYMCache.ymStatus,
+        bMS = _diffM$beforeYMCache$.mStatus,
+        bDS = _diffM$beforeYMCache$.dStatus,
+        _diffM$nextYMCache$ym = diffM.nextYMCache.ymStatus,
+        nMS = _diffM$nextYMCache$ym.mStatus,
+        nDS = _diffM$nextYMCache$ym.dStatus;
+    var cls_passDate = opts.cls_passDate,
+        cls_curDate = opts.cls_curDate,
+        cls_unPassDate = opts.cls_unPassDate;
+    var classes = [cls_passDate, cls_curDate, cls_unPassDate];
+    handleClassForDW(dDs, bMS, nMS, bDS, nDS, classes);
+  }
+
+  return [].concat((0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__.default)(dDs), (0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__.default)(newDDs));
+}
+
+function resetBeMoveDomsWDs(mCD, diffM, opts) {
+  var cls_week = opts.cls_week;
+  var _diffM$diffResult4 = diffM.diffResult,
+      calcWs = _diffM$diffResult4.calcWs,
+      ms = _diffM$diffResult4.statusChange.ms;
+  var wDs = mCD.querySelectorAll(".".concat(cls_week[0]));
+  if (!wDs) return null;
+  wDs = (0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__.default)(wDs);
+  var newWDs = [];
+
+  if (calcWs > 0) {
+    var bWs = diffM.beforeYMCache.weeks,
+        _diffM$nextYMCache2 = diffM.nextYMCache,
+        nWs = _diffM$nextYMCache2.weeks,
+        ymStatus = _diffM$nextYMCache2.ymStatus;
+    newWDs = (0,_init__WEBPACK_IMPORTED_MODULE_3__.initWDoms)(bWs + 1, nWs, ymStatus, opts);
+  } else if (calcWs < 0) {
+    for (var i = 0; i < Math.abs(calcWs); i++) {
+      wDs.pop();
+    }
+  }
+
+  if (ms) {
+    var _diffM$beforeYMCache$2 = diffM.beforeYMCache.ymStatus,
+        bMS = _diffM$beforeYMCache$2.mStatus,
+        bWS = _diffM$beforeYMCache$2.wStatus,
+        _diffM$nextYMCache$ym2 = diffM.nextYMCache.ymStatus,
+        nMS = _diffM$nextYMCache$ym2.mStatus,
+        nWS = _diffM$nextYMCache$ym2.wStatus;
+    var cls_passWeek = opts.cls_passWeek,
+        cls_curWeek = opts.cls_curWeek,
+        cls_unPassWeek = opts.cls_unPassWeek;
+    var classes = [cls_passWeek, cls_curWeek, cls_unPassWeek];
+    handleClassForDW(wDs, bMS, nMS, bWS, nWS, classes);
+  }
+
+  for (var _i5 = 0; _i5 < wDs.length; _i5++) {
+    var wD = wDs[_i5];
+    wD.textContent = '';
+  }
+
+  return [].concat((0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__.default)(wDs), (0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__.default)(newWDs));
+}
+
+function resetBeMoveDomsHeader(mWD, diffM, opts) {
+  var cls_monthHeader = opts.cls_monthHeader;
+  var mHD = mWD.querySelector(".".concat(cls_monthHeader[0]));
+  if (!mHD) return null;
+  var yD = resetBeMoveDomsYear(mHD, diffM, opts);
+  var mD = resetBeMoveDomsMonth(mHD, diffM, opts);
+  return {
+    mHD: mHD,
+    yD: yD,
+    mD: mD
+  };
+}
+
+function resetBeMoveDomsContent(mWD, diffM, opts) {
+  var cls_monthContent = opts.cls_monthContent,
+      cls_weekMarkWrap = opts.cls_weekMarkWrap;
+  var mCD = mWD.querySelector(".".concat(cls_monthContent[0]));
+  if (!mCD) return null;
+  handleContentClass(mCD, diffM, opts);
+  handleContentYMFlag(mCD, diffM);
+  var wMD = mWD.querySelector(".".concat(cls_weekMarkWrap[0]));
+  var empFDDs = resetBeMoveDomsEmpFDDs(mCD, diffM, opts);
+  var empBDDs = resetBeMoveDomsEmpBDDs(mCD, diffM, opts);
+  var dDs = resetBeMoveDomsDDs(mCD, diffM, opts);
+  var wDs = resetBeMoveDomsWDs(mCD, diffM, opts);
+  mCD.textContent = '';
+  return {
+    mCD: mCD,
+    wDs: wDs,
+    wMD: wMD,
+    empFDDs: empFDDs,
+    empBDDs: empBDDs,
+    dDs: dDs
+  };
+}
+/**
+ * @description delete past dom and add the new
+ */
+
+
+function resetYMDs(ymDs, diffM, doms) {
+  var _diffM$beforeYM = diffM.beforeYM,
+      by = _diffM$beforeYM.year,
+      bm = _diffM$beforeYM.month,
+      _diffM$nextYM = diffM.nextYM,
+      ny = _diffM$nextYM.year,
+      nm = _diffM$nextYM.month;
+  ymDs[ny] || (ymDs[ny] = {});
+  ymDs[ny][nm] = doms;
+  delete ymDs[by][bm];
 } // step2. move
 
+
+function resetBeMoveDoms(needResetDoms, diffMs, opts, ymDs, cbs) {
+  var children = needResetDoms.children;
+  var len = children.length;
+
+  for (var i = 0; i < len; i++) {
+    var mWD = children[i];
+    var diffM = diffMs[i];
+    var headerDs = resetBeMoveDomsHeader(mWD, diffM, opts);
+    var contentDs = resetBeMoveDomsContent(mWD, diffM, opts);
+    resetYMDs(ymDs, diffM, _objectSpread(_objectSpread(_objectSpread({}, headerDs), contentDs), {}, {
+      mWD: mWD
+    }));
+    (0,_utils__WEBPACK_IMPORTED_MODULE_2__.callCallbacks)(cbs.onBeforeDomBeAssyAtResetDom, null, {
+      mWD: mWD,
+      diffM: diffM,
+      headerDs: headerDs,
+      contentDs: contentDs,
+      opts: opts,
+      ymDs: ymDs,
+      needResetDoms: needResetDoms,
+      diffMs: diffMs
+    });
+    (0,_assembly__WEBPACK_IMPORTED_MODULE_4__.assyContent)(contentDs);
+    (0,_utils__WEBPACK_IMPORTED_MODULE_2__.callCallbacks)(cbs.onDomBeAssyAtResetDom, null, {
+      mWD: mWD,
+      diffM: diffM,
+      headerDs: headerDs,
+      contentDs: contentDs,
+      opts: opts,
+      ymDs: ymDs,
+      needResetDoms: needResetDoms,
+      diffMs: diffMs
+    });
+  }
+}
 
 function moveDoms(doms, diffMs, direct, opts, cbs) {
   var ymCD = doms.ymCD,
@@ -2395,387 +2339,71 @@ function moveDoms(doms, diffMs, direct, opts, cbs) {
   } else {
     ymCD.appendChild(needResetDoms);
   }
-} // step2.1 getBeMoveDom
+}
 
-/**
- * @param fg all yearMonthContentDom's Children By Backward
- * @param direct click direct
- * @param len will Be Move Dom count
- */
+function handleStepBigger(step, quan, pointers, ymCache, todayInfo, handleMonthFn) {
+  var pL = pointers.pL,
+      pR = pointers.pR;
 
+  var beforePoint = _objectSpread({}, pL);
 
-function getBeMoveDoms(fg, direct, len) {
-  var fgForBeMoveDom = document.createDocumentFragment();
-  /**
-   * @description because direct prev's be move dom is in front of all, so backward for pop it
-   */
+  handleMonthFn(pL, step);
+  handleMonthFn(pR, step);
 
-  if (direct === 'prev') {
-    fg = node2FragmentFromLast(fg);
-  }
+  var nextPoint = _objectSpread({}, pL);
 
-  var children = (0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__.default)(fg.children);
+  var diffMs = [];
 
-  for (var i = 0; i < len; i++) {
-    var child = children.pop();
-    fgForBeMoveDom.appendChild(child);
-  }
+  for (var i = 0; i < quan; i++) {
+    var beforeYM = _objectSpread({}, beforePoint);
 
-  return {
-    fgForBeMoveDom: fgForBeMoveDom,
-    fgForUnMoveDom: fg
-  };
-} // step2.2 resetBeMoveDom
+    var beforeYMCache = (0,_init__WEBPACK_IMPORTED_MODULE_3__.getCache)(beforePoint, ymCache, todayInfo);
 
+    var nextYM = _objectSpread({}, nextPoint);
 
-function resetBeMoveDoms(needResetDoms, diffMs, opts, ymDs, cbs) {
-  var children = needResetDoms.children;
-  var len = children.length;
-
-  for (var i = 0; i < len; i++) {
-    var mWD = children[i];
-    var diffM = diffMs[i];
-    var headerDs = resetBeMoveDomsHeader(mWD, diffM, opts);
-    var contentDs = resetBeMoveDomsContent(mWD, diffM, opts);
-    resetYMDs(ymDs, diffM, _objectSpread(_objectSpread(_objectSpread({}, headerDs), contentDs), {}, {
-      mWD: mWD
-    }));
-    (0,_utils__WEBPACK_IMPORTED_MODULE_2__.callCallbacks)(cbs.onBeforeDomBeAssyAtResetDom, null, {
-      mWD: mWD,
-      diffM: diffM,
-      headerDs: headerDs,
-      contentDs: contentDs,
-      opts: opts,
-      ymDs: ymDs,
-      needResetDoms: needResetDoms,
-      diffMs: diffMs
-    });
-    (0,_assembly__WEBPACK_IMPORTED_MODULE_4__.assyContent)(contentDs);
-    (0,_utils__WEBPACK_IMPORTED_MODULE_2__.callCallbacks)(cbs.onDomBeAssyAtResetDom, null, {
-      mWD: mWD,
-      diffM: diffM,
-      headerDs: headerDs,
-      contentDs: contentDs,
-      opts: opts,
-      ymDs: ymDs,
-      needResetDoms: needResetDoms,
-      diffMs: diffMs
+    var nextYMCache = (0,_init__WEBPACK_IMPORTED_MODULE_3__.getCache)(nextPoint, ymCache, todayInfo);
+    var diffResult = diff(nextYMCache, beforeYMCache);
+    (0,_utils__WEBPACK_IMPORTED_MODULE_2__.addMonth)(beforePoint, 1);
+    (0,_utils__WEBPACK_IMPORTED_MODULE_2__.addMonth)(nextPoint, 1);
+    diffMs.push({
+      beforeYMCache: beforeYMCache,
+      nextYMCache: nextYMCache,
+      beforeYM: beforeYM,
+      nextYM: nextYM,
+      diffResult: diffResult
     });
   }
+
+  return diffMs;
 }
 
-function resetBeMoveDomsHeader(mWD, diffM, opts) {
-  var cls_monthHeader = opts.cls_monthHeader;
-  var mHD = mWD.querySelector(".".concat(cls_monthHeader[0]));
-  if (!mHD) return null;
-  var yD = resetBeMoveDomsYear(mHD, diffM, opts);
-  var mD = resetBeMoveDomsMonth(mHD, diffM, opts);
-  return {
-    mHD: mHD,
-    yD: yD,
-    mD: mD
-  };
-}
+function handleStepSmaller(step, pointers, ymCache, todayInfo, handleMonthFn) {
+  var beforeP = pointers.beforeP,
+      nextP = pointers.nextP;
+  var diffMs = [];
 
-function resetBeMoveDomsYear(mHD, diffM, opts) {
-  var yNames = opts.yNames,
-      cls_year = opts.cls_year;
-  var yD = mHD.querySelector(".".concat(cls_year[0]));
-  if (!yD) return null;
-  var ys = diffM.diffResult.statusChange.ys,
-      year = diffM.nextYM.year;
-  var yName = yNames && yNames[year] || year;
-  yD.textContent = yName;
+  for (var i = 0; i < step; i++) {
+    var beforeYMCache = ymCache[beforeP.year][beforeP.month];
 
-  if (ys) {
-    var cls_passYear = opts.cls_passYear,
-        cls_curYear = opts.cls_curYear,
-        cls_unPassYear = opts.cls_unPassYear;
-    var nYS = diffM.nextYMCache.ymStatus.yStatus,
-        bYS = diffM.beforeYMCache.ymStatus.yStatus;
-    var classes = [cls_passYear, cls_curYear, cls_unPassYear];
-    resetClassByInterval(yD, bYS, nYS, classes);
+    var beforeYM = _objectSpread({}, beforeP);
+
+    handleMonthFn(beforeP, 1);
+    handleMonthFn(nextP, 1);
+    var nextYMCache = (0,_init__WEBPACK_IMPORTED_MODULE_3__.getCache)(nextP, ymCache, todayInfo);
+
+    var nextYM = _objectSpread({}, nextP);
+
+    var diffResult = diff(nextYMCache, beforeYMCache);
+    diffMs.push({
+      beforeYMCache: beforeYMCache,
+      nextYMCache: nextYMCache,
+      beforeYM: beforeYM,
+      nextYM: nextYM,
+      diffResult: diffResult
+    });
   }
 
-  return yD;
-}
-
-function resetBeMoveDomsMonth(mHD, diffM, opts) {
-  var mNames = opts.mNames,
-      cls_month = opts.cls_month;
-  var mD = mHD.querySelector(".".concat(cls_month[0]));
-  if (!mD) return null;
-  var ms = diffM.diffResult.statusChange.ms,
-      month = diffM.nextYM.month;
-  var mName = mNames[month];
-  mD.textContent = mName;
-
-  if (ms) {
-    var nMS = diffM.nextYMCache.ymStatus.mStatus,
-        bMS = diffM.beforeYMCache.ymStatus.mStatus;
-    var cls_passMonth = opts.cls_passMonth,
-        cls_curMonth = opts.cls_curMonth,
-        cls_unPassMonth = opts.cls_unPassMonth;
-    var classes = [cls_passMonth, cls_curMonth, cls_unPassMonth];
-    resetClassByInterval(mD, bMS, nMS, classes);
-  }
-
-  return mD;
-}
-
-function resetBeMoveDomsContent(mWD, diffM, opts) {
-  var cls_monthContent = opts.cls_monthContent,
-      cls_weekMarkWrap = opts.cls_weekMarkWrap;
-  var mCD = mWD.querySelector(".".concat(cls_monthContent[0]));
-  if (!mCD) return null;
-  handleContentClass(mCD, diffM, opts);
-  handleContentYMFlag(mCD, diffM);
-  var wMD = mWD.querySelector(".".concat(cls_weekMarkWrap[0]));
-  var empFDDs = resetBeMoveDomsEmpFDDs(mCD, diffM, opts);
-  var empBDDs = resetBeMoveDomsEmpBDDs(mCD, diffM, opts);
-  var dDs = resetBeMoveDomsDDs(mCD, diffM, opts);
-  var wDs = resetBeMoveDomsWDs(mCD, diffM, opts);
-  mCD.textContent = '';
-  return {
-    mCD: mCD,
-    wDs: wDs,
-    wMD: wMD,
-    empFDDs: empFDDs,
-    empBDDs: empBDDs,
-    dDs: dDs
-  };
-}
-
-function handleContentClass(mCD, diffM, opts) {
-  var calcWs = diffM.diffResult.calcWs;
-
-  if (calcWs !== 0) {
-    var cls_w4Content = opts.cls_w4Content,
-        cls_w5Content = opts.cls_w5Content,
-        cls_w6Content = opts.cls_w6Content;
-    var nWs = diffM.nextYMCache.weeks,
-        bWs = diffM.beforeYMCache.weeks;
-    var classes = [cls_w4Content, cls_w5Content, cls_w6Content];
-    var removeCls = (0,_init__WEBPACK_IMPORTED_MODULE_3__.handleContentWeeksClass)(bWs, classes);
-    var addCls = (0,_init__WEBPACK_IMPORTED_MODULE_3__.handleContentWeeksClass)(nWs, classes);
-    (0,_utils__WEBPACK_IMPORTED_MODULE_2__.removeClass)(mCD, removeCls);
-    (0,_utils__WEBPACK_IMPORTED_MODULE_2__.addClass)(mCD, addCls);
-  }
-}
-
-function handleContentYMFlag(mCD, diffM) {
-  mCD.$_ym = diffM.nextYM;
-}
-
-function resetBeMoveDomsWDs(mCD, diffM, opts) {
-  var cls_week = opts.cls_week;
-  var _diffM$diffResult = diffM.diffResult,
-      calcWs = _diffM$diffResult.calcWs,
-      ms = _diffM$diffResult.statusChange.ms;
-  var wDs = mCD.querySelectorAll(".".concat(cls_week[0]));
-  if (!wDs) return null;
-  wDs = (0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__.default)(wDs);
-  var newWDs = [];
-
-  if (calcWs > 0) {
-    var bWs = diffM.beforeYMCache.weeks,
-        _diffM$nextYMCache = diffM.nextYMCache,
-        nWs = _diffM$nextYMCache.weeks,
-        ymStatus = _diffM$nextYMCache.ymStatus;
-    newWDs = (0,_init__WEBPACK_IMPORTED_MODULE_3__.initWDoms)(bWs + 1, nWs, ymStatus, opts);
-  } else if (calcWs < 0) {
-    for (var i = 0; i < Math.abs(calcWs); i++) {
-      wDs.pop();
-    }
-  }
-
-  if (ms) {
-    var _diffM$beforeYMCache$ = diffM.beforeYMCache.ymStatus,
-        bMS = _diffM$beforeYMCache$.mStatus,
-        bWS = _diffM$beforeYMCache$.wStatus,
-        _diffM$nextYMCache$ym = diffM.nextYMCache.ymStatus,
-        nMS = _diffM$nextYMCache$ym.mStatus,
-        nWS = _diffM$nextYMCache$ym.wStatus;
-    var cls_passWeek = opts.cls_passWeek,
-        cls_curWeek = opts.cls_curWeek,
-        cls_unPassWeek = opts.cls_unPassWeek;
-    var classes = [cls_passWeek, cls_curWeek, cls_unPassWeek];
-    handleClassForDW(wDs, bMS, nMS, bWS, nWS, classes);
-  }
-
-  for (var _i = 0; _i < wDs.length; _i++) {
-    var wD = wDs[_i];
-    wD.textContent = '';
-  }
-
-  return [].concat((0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__.default)(wDs), (0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__.default)(newWDs));
-}
-
-function resetBeMoveDomsEmpFDDs(mCD, diffM, opts) {
-  var cls_empFDate = opts.cls_empFDate;
-  var _diffM$diffResult2 = diffM.diffResult,
-      calcFD = _diffM$diffResult2.calcFD,
-      ms = _diffM$diffResult2.statusChange.ms;
-  var empFDDs = mCD.querySelectorAll(".".concat(cls_empFDate[0]));
-  if (!empFDDs) return null;
-  empFDDs = (0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__.default)(empFDDs);
-  var newEmpFDDs = [];
-
-  if (calcFD > 0) {
-    var ymStatus = diffM.nextYMCache.ymStatus;
-    newEmpFDDs = (0,_init__WEBPACK_IMPORTED_MODULE_3__.initEmptyFDDoms)(calcFD, ymStatus, opts);
-  } else if (calcFD < 0) {
-    for (var i = 0; i < Math.abs(calcFD); i++) {
-      empFDDs.pop();
-    }
-  }
-
-  if (ms) {
-    var nMS = diffM.nextYMCache.ymStatus.mStatus,
-        bMS = diffM.beforeYMCache.ymStatus.mStatus;
-
-    if (nMS <= 0 && bMS > 0 || nMS > 0 && bMS <= 0) {
-      var cls_passEmpFDate = opts.cls_passEmpFDate,
-          cls_unPassEmpFDate = opts.cls_unPassEmpFDate;
-      var classes = [cls_passEmpFDate, cls_passEmpFDate, cls_unPassEmpFDate];
-
-      for (var _i2 = 0; _i2 < empFDDs.length; _i2++) {
-        var empFDD = empFDDs[_i2];
-        resetClassByInterval(empFDD, bMS, nMS, classes);
-      }
-    }
-  }
-
-  return [].concat((0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__.default)(empFDDs), (0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__.default)(newEmpFDDs));
-}
-
-function resetBeMoveDomsEmpBDDs(mCD, diffM, opts) {
-  var cls_empBDate = opts.cls_empBDate;
-  var _diffM$diffResult3 = diffM.diffResult,
-      calcLD = _diffM$diffResult3.calcLD,
-      ms = _diffM$diffResult3.statusChange.ms;
-  var empBDDs = mCD.querySelectorAll(".".concat(cls_empBDate[0]));
-  if (!empBDDs) return null;
-  empBDDs = (0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__.default)(empBDDs);
-  var newEmpBDDs = [];
-
-  if (calcLD < 0) {
-    var ymStatus = diffM.nextYMCache.ymStatus;
-    newEmpBDDs = (0,_init__WEBPACK_IMPORTED_MODULE_3__.initEmptyBDDoms)(6 - Math.abs(calcLD), ymStatus, opts);
-  } else if (calcLD > 0) {
-    for (var i = 0; i < calcLD; i++) {
-      empBDDs.pop();
-    }
-  }
-
-  if (ms) {
-    var nMS = diffM.nextYMCache.ymStatus.mStatus,
-        bMS = diffM.beforeYMCache.ymStatus.mStatus;
-
-    if (nMS < 0 && bMS >= 0 || nMS >= 0 && bMS < 0) {
-      var cls_passEmpBDate = opts.cls_passEmpBDate,
-          cls_unPassEmpBDate = opts.cls_unPassEmpBDate;
-      var classes = [cls_passEmpBDate, cls_unPassEmpBDate, cls_unPassEmpBDate];
-
-      for (var _i3 = 0; _i3 < empBDDs.length; _i3++) {
-        var empBDD = empBDDs[_i3];
-        resetClassByInterval(empBDD, bMS, nMS, classes);
-      }
-    }
-  }
-
-  return [].concat((0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__.default)(empBDDs), (0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__.default)(newEmpBDDs));
-}
-
-function resetBeMoveDomsDDs(mCD, diffM, opts) {
-  var cls_date = opts.cls_date;
-  var _diffM$diffResult4 = diffM.diffResult,
-      calcDs = _diffM$diffResult4.calcDs,
-      ms = _diffM$diffResult4.statusChange.ms;
-  var dDs = mCD.querySelectorAll(".".concat(cls_date[0]));
-  if (!dDs) return null;
-  dDs = (0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__.default)(dDs);
-  var newDDs = [];
-
-  if (calcDs > 0) {
-    var bDs = diffM.beforeYMCache.days,
-        _diffM$nextYMCache2 = diffM.nextYMCache,
-        nDs = _diffM$nextYMCache2.days,
-        ymStatus = _diffM$nextYMCache2.ymStatus;
-    newDDs = (0,_init__WEBPACK_IMPORTED_MODULE_3__.initDDoms)(bDs + 1, nDs, ymStatus, opts);
-  } else if (calcDs < 0) {
-    for (var i = 0; i < Math.abs(calcDs); i++) {
-      dDs.pop();
-    }
-  }
-
-  if (ms) {
-    var _diffM$beforeYMCache$2 = diffM.beforeYMCache.ymStatus,
-        bMS = _diffM$beforeYMCache$2.mStatus,
-        bDS = _diffM$beforeYMCache$2.dStatus,
-        _diffM$nextYMCache$ym2 = diffM.nextYMCache.ymStatus,
-        nMS = _diffM$nextYMCache$ym2.mStatus,
-        nDS = _diffM$nextYMCache$ym2.dStatus;
-    var cls_passDate = opts.cls_passDate,
-        cls_curDate = opts.cls_curDate,
-        cls_unPassDate = opts.cls_unPassDate;
-    var classes = [cls_passDate, cls_curDate, cls_unPassDate];
-    handleClassForDW(dDs, bMS, nMS, bDS, nDS, classes);
-  }
-
-  return [].concat((0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__.default)(dDs), (0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__.default)(newDDs));
-} // handle class for dates and weeks
-
-
-function handleClassForDW(dom, bMS, nMS, beforeP, nextP, classes) {
-  if (bMS !== 0 && nMS !== 0) {
-    for (var i = 0; i < dom.length; i++) {
-      var dD = dom[i];
-      resetClassByInterval(dD, bMS, nMS, classes);
-    }
-  } else if (bMS !== 0) {
-    var removeCls = (0,_utils__WEBPACK_IMPORTED_MODULE_2__.getClassByInterval)(bMS, classes);
-
-    for (var _i4 = 0; _i4 < dom.length; _i4++) {
-      var _dD = dom[_i4];
-      var date = _i4 + 1;
-      var interval = (0,_utils__WEBPACK_IMPORTED_MODULE_2__.judgeInterval)(date, nextP);
-      var addCls = (0,_utils__WEBPACK_IMPORTED_MODULE_2__.getClassByInterval)(interval, classes);
-      (0,_utils__WEBPACK_IMPORTED_MODULE_2__.removeClass)(_dD, removeCls);
-      (0,_utils__WEBPACK_IMPORTED_MODULE_2__.addClass)(_dD, addCls);
-    }
-  } else if (nMS !== 0) {
-    var _addCls = (0,_utils__WEBPACK_IMPORTED_MODULE_2__.getClassByInterval)(nMS, classes);
-
-    for (var _i5 = 0; _i5 < dom.length; _i5++) {
-      var _dD2 = dom[_i5];
-
-      var _date = _i5 + 1;
-
-      var _interval = (0,_utils__WEBPACK_IMPORTED_MODULE_2__.judgeInterval)(_date, beforeP);
-
-      var _removeCls = (0,_utils__WEBPACK_IMPORTED_MODULE_2__.getClassByInterval)(_interval, classes);
-
-      (0,_utils__WEBPACK_IMPORTED_MODULE_2__.removeClass)(_dD2, _removeCls);
-      (0,_utils__WEBPACK_IMPORTED_MODULE_2__.addClass)(_dD2, _addCls);
-    }
-  }
-}
-/**
- * @description delete past dom and add the new
- */
-
-
-function resetYMDs(ymDs, diffM, doms) {
-  var _diffM$beforeYM = diffM.beforeYM,
-      by = _diffM$beforeYM.year,
-      bm = _diffM$beforeYM.month,
-      _diffM$nextYM = diffM.nextYM,
-      ny = _diffM$nextYM.year,
-      nm = _diffM$nextYM.month;
-  ymDs[ny] || (ymDs[ny] = {});
-  ymDs[ny][nm] = doms;
-  delete ymDs[by][bm];
+  return diffMs;
 }
 
 function goBack(step, doms, opts, ymData, pointers, cbs) {
@@ -2837,70 +2465,477 @@ function goNext(step, doms, opts, ymData, pointers, cbs) {
   });
 }
 
-function handleStepSmaller(step, pointers, ymCache, todayInfo, handleMonthFn) {
-  var beforeP = pointers.beforeP,
-      nextP = pointers.nextP;
-  var diffMs = [];
+/***/ }),
 
-  for (var i = 0; i < step; i++) {
-    var beforeYMCache = ymCache[beforeP.year][beforeP.month];
+/***/ "./src/zz/utils/common.js":
+/*!********************************!*\
+  !*** ./src/zz/utils/common.js ***!
+  \********************************/
+/*! namespace exports */
+/*! export callCallbacks [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export deepcopy [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export gcArr [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export gcObj [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export initCallback [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export isArr [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export isFunc [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export isNaN [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export isObj [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export judgeInterval [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export tsEnumToObj [provided] [no usage info] [missing usage info prevents renaming] */
+/*! other exports [not provided] [no usage info] */
+/*! runtime requirements: __webpack_require__.r, __webpack_exports__, __webpack_require__.d, __webpack_require__.* */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-    var beforeYM = _objectSpread({}, beforeP);
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "isObj": () => /* binding */ isObj,
+/* harmony export */   "isFunc": () => /* binding */ isFunc,
+/* harmony export */   "isArr": () => /* binding */ isArr,
+/* harmony export */   "isNaN": () => /* binding */ isNaN,
+/* harmony export */   "judgeInterval": () => /* binding */ judgeInterval,
+/* harmony export */   "gcObj": () => /* binding */ gcObj,
+/* harmony export */   "gcArr": () => /* binding */ gcArr,
+/* harmony export */   "tsEnumToObj": () => /* binding */ tsEnumToObj,
+/* harmony export */   "deepcopy": () => /* binding */ deepcopy,
+/* harmony export */   "initCallback": () => /* binding */ initCallback,
+/* harmony export */   "callCallbacks": () => /* binding */ callCallbacks
+/* harmony export */ });
+var isObj = function isObj(obj) {
+  return Object.prototype.toString.call(obj) === '[object Object]';
+};
+var isFunc = function isFunc(func) {
+  return Object.prototype.toString.call(func) === '[object Function]';
+};
+var isArr = function isArr(arr) {
+  return Object.prototype.toString.call(arr) === '[object Array]';
+};
+var isNaN = function isNaN(input) {
+  return typeof input === 'number' && input !== input;
+};
+/**
+ * @description 判斷狀態區間
+ * @param refP 參考點
+ * @param point 判斷點
+ * @return -1: 左, 0: 當前, 1: 右
+ */
 
-    handleMonthFn(beforeP, 1);
-    handleMonthFn(nextP, 1);
-    var nextYMCache = (0,_init__WEBPACK_IMPORTED_MODULE_3__.getCache)(nextP, ymCache, todayInfo);
+function judgeInterval(refP, point) {
+  if (refP < point) {
+    return -1;
+  } else if (refP === point) {
+    return 0;
+  } else if (refP > point) {
+    return 1;
+  } else {
+    throw new Error('judgeInterval params is wrong');
+  }
+}
+function gcObj(obj) {
+  for (var key in obj) {
+    delete obj[key];
+  }
+}
+function gcArr(arr) {
+  for (var i = 0; i < arr.length; i++) {
+    arr[i] = null;
+  }
+}
+function tsEnumToObj(obj) {
+  var tmp = {};
 
-    var nextYM = _objectSpread({}, nextP);
-
-    var diffResult = diff(nextYMCache, beforeYMCache);
-    diffMs.push({
-      beforeYMCache: beforeYMCache,
-      nextYMCache: nextYMCache,
-      beforeYM: beforeYM,
-      nextYM: nextYM,
-      diffResult: diffResult
-    });
+  for (var key in obj) {
+    tmp[tmp[key] = obj[key]] = key;
   }
 
-  return diffMs;
+  return tmp;
 }
+function deepcopy(target) {
+  if (isObj(target)) {
+    var obj = {};
 
-function handleStepBigger(step, quan, pointers, ymCache, todayInfo, handleMonthFn) {
-  var pL = pointers.pL,
-      pR = pointers.pR;
+    for (var key in target) {
+      obj[key] = deepcopy(target[key]);
+    }
 
-  var beforePoint = _objectSpread({}, pL);
+    return obj;
+  } else if (isArr(target)) {
+    var arr = [];
 
-  handleMonthFn(pL, step);
-  handleMonthFn(pR, step);
+    for (var i = 0; i < target.length; i++) {
+      var val = target[i];
+      arr.push(deepcopy(val));
+    }
 
-  var nextPoint = _objectSpread({}, pL);
+    return arr;
+  } else {
+    return target;
+  }
+}
+function initCallback(cbObj, cbs, del) {
+  for (var key in cbs) {
+    var cbArr = cbs[key];
+    var cb = cbObj[key];
 
-  var diffMs = [];
+    if (cb) {
+      if (isFunc(cb)) {
+        cbArr.push(cb);
+      }
 
-  for (var i = 0; i < quan; i++) {
-    var beforeYM = _objectSpread({}, beforePoint);
-
-    var beforeYMCache = (0,_init__WEBPACK_IMPORTED_MODULE_3__.getCache)(beforePoint, ymCache, todayInfo);
-
-    var nextYM = _objectSpread({}, nextPoint);
-
-    var nextYMCache = (0,_init__WEBPACK_IMPORTED_MODULE_3__.getCache)(nextPoint, ymCache, todayInfo);
-    var diffResult = diff(nextYMCache, beforeYMCache);
-    (0,_utils__WEBPACK_IMPORTED_MODULE_2__.addMonth)(beforePoint, 1);
-    (0,_utils__WEBPACK_IMPORTED_MODULE_2__.addMonth)(nextPoint, 1);
-    diffMs.push({
-      beforeYMCache: beforeYMCache,
-      nextYMCache: nextYMCache,
-      beforeYM: beforeYM,
-      nextYM: nextYM,
-      diffResult: diffResult
-    });
+      if (del) {
+        delete cbObj[key];
+      }
+    }
+  }
+}
+function callCallbacks(cbs, self) {
+  for (var _len = arguments.length, options = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
+    options[_key - 2] = arguments[_key];
   }
 
-  return diffMs;
+  for (var i = 0; i < cbs.length; i++) {
+    var cb = cbs[i];
+    cb.call.apply(cb, [self].concat(options));
+  }
 }
+
+/***/ }),
+
+/***/ "./src/zz/utils/date.js":
+/*!******************************!*\
+  !*** ./src/zz/utils/date.js ***!
+  \******************************/
+/*! namespace exports */
+/*! export addMonth [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export dateStrToDateObj [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export fixYMAfterAdd [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export fixYMAfterSub [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export getDateInfo [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export getDays [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export getFirstDay [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export getLastDay [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export getWeek [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export subMonth [provided] [no usage info] [missing usage info prevents renaming] */
+/*! other exports [not provided] [no usage info] */
+/*! runtime requirements: __webpack_require__, __webpack_require__.r, __webpack_exports__, __webpack_require__.d, __webpack_require__.* */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "dateStrToDateObj": () => /* binding */ dateStrToDateObj,
+/* harmony export */   "getDateInfo": () => /* binding */ getDateInfo,
+/* harmony export */   "getDays": () => /* binding */ getDays,
+/* harmony export */   "getFirstDay": () => /* binding */ getFirstDay,
+/* harmony export */   "getLastDay": () => /* binding */ getLastDay,
+/* harmony export */   "getWeek": () => /* binding */ getWeek,
+/* harmony export */   "fixYMAfterAdd": () => /* binding */ fixYMAfterAdd,
+/* harmony export */   "fixYMAfterSub": () => /* binding */ fixYMAfterSub,
+/* harmony export */   "addMonth": () => /* binding */ addMonth,
+/* harmony export */   "subMonth": () => /* binding */ subMonth
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_construct__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/construct */ "./node_modules/@babel/runtime/helpers/esm/construct.js");
+/* harmony import */ var _babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/toConsumableArray */ "./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js");
+/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./common */ "./src/zz/utils/common.js");
+;
+
+
+var dateStrToDateObj = function dateStrToDateObj(dateStr) {
+  if (typeof dateStr !== 'string' || !dateStr.includes('-')) {
+    return null;
+  }
+
+  var dateStrArr = dateStr.split('-').map(function (str) {
+    return str * 1;
+  });
+  dateStrArr[1] -= 1;
+
+  var dObj = (0,_babel_runtime_helpers_esm_construct__WEBPACK_IMPORTED_MODULE_0__.default)(Date, (0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__.default)(dateStrArr));
+
+  if ((0,_common__WEBPACK_IMPORTED_MODULE_2__.isNaN)(dObj.getTime())) {
+    return null;
+  }
+
+  return dObj;
+};
+var getDateInfo = function getDateInfo(dObj) {
+  var year = dObj.getFullYear();
+  var month = dObj.getMonth() + 1;
+  var date = dObj.getDate();
+  return {
+    year: year,
+    month: month,
+    date: date
+  };
+};
+
+function isLeapYear(year) {
+  return year % 4 === 0 && year % 100 !== 0 || year % 400 === 0;
+}
+
+var getDays = function getDays(year, month) {
+  var day30 = [4, 6, 8, 9, 11];
+  var day31 = [1, 3, 5, 7, 8, 10, 12];
+  var days = day31.includes(month) ? 31 : day30.includes(month) ? 30 : isLeapYear(year) ? 29 : 28;
+  return days;
+};
+var getFirstDay = function getFirstDay(dObj) {
+  return dObj.getDay();
+};
+var getLastDay = function getLastDay(firstDay, days) {
+  return (firstDay + days - 1) % 7;
+};
+var getWeek = function getWeek(day) {
+  return Math.ceil(day / 7);
+};
+var fixYMAfterAdd = function fixYMAfterAdd(year, month) {
+  if (month > 12) {
+    year += 1;
+    month -= 12;
+  }
+
+  return {
+    year: year,
+    month: month
+  };
+};
+var fixYMAfterSub = function fixYMAfterSub(year, month) {
+  if (month < 1) {
+    year -= 1;
+    month += 12;
+  }
+
+  return {
+    year: year,
+    month: month
+  };
+};
+var addMonth = function addMonth(ym, number) {
+  var year = ym.year,
+      month = ym.month;
+  month += number;
+  var fixYM = fixYMAfterAdd(year, month);
+  ym.year = fixYM.year;
+  ym.month = fixYM.month;
+};
+var subMonth = function subMonth(ym, number) {
+  var year = ym.year,
+      month = ym.month;
+  month -= number;
+  var fixYM = fixYMAfterSub(year, month);
+  ym.year = fixYM.year;
+  ym.month = fixYM.month;
+};
+
+/***/ }),
+
+/***/ "./src/zz/utils/dom.js":
+/*!*****************************!*\
+  !*** ./src/zz/utils/dom.js ***!
+  \*****************************/
+/*! namespace exports */
+/*! export addClass [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export createDom [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export getClassByInterval [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export initClass [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export isTag [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export parentAppendChildren [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export removeClass [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export setAttrs [provided] [no usage info] [missing usage info prevents renaming] */
+/*! other exports [not provided] [no usage info] */
+/*! runtime requirements: __webpack_require__, __webpack_require__.r, __webpack_exports__, __webpack_require__.d, __webpack_require__.* */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "addClass": () => /* binding */ addClass,
+/* harmony export */   "removeClass": () => /* binding */ removeClass,
+/* harmony export */   "setAttrs": () => /* binding */ setAttrs,
+/* harmony export */   "createDom": () => /* binding */ createDom,
+/* harmony export */   "getClassByInterval": () => /* binding */ getClassByInterval,
+/* harmony export */   "isTag": () => /* binding */ isTag,
+/* harmony export */   "parentAppendChildren": () => /* binding */ parentAppendChildren,
+/* harmony export */   "initClass": () => /* binding */ initClass
+/* harmony export */ });
+/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./common */ "./src/zz/utils/common.js");
+;
+var addClass = function addClass(dom, cls) {
+  if (!(0,_common__WEBPACK_IMPORTED_MODULE_0__.isArr)(cls)) return false;
+
+  for (var i = 0; i < cls.length; i++) {
+    var clsname = cls[i];
+    dom.classList.add(clsname);
+  }
+};
+var removeClass = function removeClass(dom, cls) {
+  if (!(0,_common__WEBPACK_IMPORTED_MODULE_0__.isArr)(cls)) return false;
+
+  for (var i = 0; i < cls.length; i++) {
+    var clsname = cls[i];
+    dom.classList.remove(clsname);
+  }
+};
+var setAttrs = function setAttrs(dom, attrs) {
+  if (!(0,_common__WEBPACK_IMPORTED_MODULE_0__.isObj)(attrs)) return false;
+
+  for (var key in attrs) {
+    var val = attrs[key];
+
+    if (typeof val === 'string') {
+      dom.setAttribute(key, val);
+    }
+  }
+};
+var createDom = function createDom() {
+  var tag = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'span';
+  var content = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+  var cls = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
+  var attrs = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
+  var dom = document.createElement(tag);
+  dom.textContent = content;
+  cls.length && addClass(dom, cls);
+  (0,_common__WEBPACK_IMPORTED_MODULE_0__.isObj)(attrs) && setAttrs(dom, attrs);
+  return dom;
+};
+/**
+ * @param interval 區間 -1 | 0 | 1
+ * @param classes [-1 class, 0 class, 1 class]
+ */
+
+function getClassByInterval(interval, classes) {
+  if (interval === 1) {
+    return classes[2];
+  } else if (interval === -1) {
+    return classes[0];
+  } else if (interval === 0) {
+    return classes[1];
+  } else {
+    throw new Error('getClassByInterval params is wrong');
+  }
+}
+function isTag(tag) {
+  if (typeof tag === 'string') {
+    var searchLv1Tag = 'div,span,i,img,ul,li,p,button';
+    var searchLv2Tag = 'article,aside,footer,header,h1,h2,h3,h4,h5,h6,nav,section,figcaption,figure,canvas,script,form,input,select,textarea';
+    var searchLv3Tag = 'html,body,base,head,link,meta,style,title,dd,dl,dt,ol,picture,address,main,audio,video,time,caption,col,colgroup,table,thead,tbody,td,th,tr';
+    var searchLv4Tag = 'hgroup,hr,pre,a,b,abbr,bdi,bdo,br,cite,code,data,dfn,em,kbd,mark,q,rp,rt,rtc,ruby,s,samp,small,strong,sub,sup,u,var,wbr,area,map,track,embed,object,param,source,noscript,del,ins,datalist,fieldset,label,legend,meter,optgroup,option,output,progress,details,dialog,menu,menuitem,summary,content,element,shadow,template,blockquote,iframe,tfoot';
+    var svgTag = 'svg,animate,circle,clippath,cursor,defs,desc,ellipse,filter,font-face,' + 'foreignObject,g,glyph,image,line,marker,mask,missing-glyph,path,pattern,' + 'polygon,polyline,rect,switch,symbol,text,textpath,tspan,use,view'; // MDN said custom element names must contain a hyphen.
+
+    var customEl = /^[a-zA-Z]+-[a-zA-Z]+(-[a-zA-Z]+)*$/;
+    var sourceTags = [searchLv1Tag, searchLv2Tag, svgTag, searchLv3Tag, searchLv4Tag];
+    return sourceTags.some(function (sourceTag) {
+      return sourceTag.includes(tag);
+    }) || customEl.test(tag);
+  }
+
+  return false;
+}
+function parentAppendChildren(parent, children) {
+  for (var i = 0; i < children.length; i++) {
+    var child = children[i];
+    parent.appendChild(child);
+  }
+} // INIT
+
+function initClass(options, dCls) {
+  var clsObj = {};
+
+  for (var clsKey in dCls) {
+    var cls = options[clsKey];
+
+    if (cls !== undefined) {
+      if (typeof cls !== 'string') {
+        cls = dCls[clsKey];
+      }
+
+      delete options[clsKey];
+    } else {
+      cls = dCls[clsKey];
+    }
+
+    clsObj[clsKey] = cls ? cls.split(' ') : [];
+  }
+
+  return clsObj;
+}
+
+/***/ }),
+
+/***/ "./src/zz/utils/index.js":
+/*!*******************************!*\
+  !*** ./src/zz/utils/index.js ***!
+  \*******************************/
+/*! namespace exports */
+/*! export addClass [provided] [no usage info] [missing usage info prevents renaming] -> ./src/zz/utils/dom.js .addClass */
+/*! export addMonth [provided] [no usage info] [missing usage info prevents renaming] -> ./src/zz/utils/date.js .addMonth */
+/*! export callCallbacks [provided] [no usage info] [missing usage info prevents renaming] -> ./src/zz/utils/common.js .callCallbacks */
+/*! export createDom [provided] [no usage info] [missing usage info prevents renaming] -> ./src/zz/utils/dom.js .createDom */
+/*! export dateStrToDateObj [provided] [no usage info] [missing usage info prevents renaming] -> ./src/zz/utils/date.js .dateStrToDateObj */
+/*! export deepcopy [provided] [no usage info] [missing usage info prevents renaming] -> ./src/zz/utils/common.js .deepcopy */
+/*! export fixYMAfterAdd [provided] [no usage info] [missing usage info prevents renaming] -> ./src/zz/utils/date.js .fixYMAfterAdd */
+/*! export fixYMAfterSub [provided] [no usage info] [missing usage info prevents renaming] -> ./src/zz/utils/date.js .fixYMAfterSub */
+/*! export gcArr [provided] [no usage info] [missing usage info prevents renaming] -> ./src/zz/utils/common.js .gcArr */
+/*! export gcObj [provided] [no usage info] [missing usage info prevents renaming] -> ./src/zz/utils/common.js .gcObj */
+/*! export getClassByInterval [provided] [no usage info] [missing usage info prevents renaming] -> ./src/zz/utils/dom.js .getClassByInterval */
+/*! export getDateInfo [provided] [no usage info] [missing usage info prevents renaming] -> ./src/zz/utils/date.js .getDateInfo */
+/*! export getDays [provided] [no usage info] [missing usage info prevents renaming] -> ./src/zz/utils/date.js .getDays */
+/*! export getFirstDay [provided] [no usage info] [missing usage info prevents renaming] -> ./src/zz/utils/date.js .getFirstDay */
+/*! export getLastDay [provided] [no usage info] [missing usage info prevents renaming] -> ./src/zz/utils/date.js .getLastDay */
+/*! export getWeek [provided] [no usage info] [missing usage info prevents renaming] -> ./src/zz/utils/date.js .getWeek */
+/*! export initCallback [provided] [no usage info] [missing usage info prevents renaming] -> ./src/zz/utils/common.js .initCallback */
+/*! export initClass [provided] [no usage info] [missing usage info prevents renaming] -> ./src/zz/utils/dom.js .initClass */
+/*! export isArr [provided] [no usage info] [missing usage info prevents renaming] -> ./src/zz/utils/common.js .isArr */
+/*! export isFunc [provided] [no usage info] [missing usage info prevents renaming] -> ./src/zz/utils/common.js .isFunc */
+/*! export isNaN [provided] [no usage info] [missing usage info prevents renaming] -> ./src/zz/utils/common.js .isNaN */
+/*! export isObj [provided] [no usage info] [missing usage info prevents renaming] -> ./src/zz/utils/common.js .isObj */
+/*! export isTag [provided] [no usage info] [missing usage info prevents renaming] -> ./src/zz/utils/dom.js .isTag */
+/*! export judgeInterval [provided] [no usage info] [missing usage info prevents renaming] -> ./src/zz/utils/common.js .judgeInterval */
+/*! export parentAppendChildren [provided] [no usage info] [missing usage info prevents renaming] -> ./src/zz/utils/dom.js .parentAppendChildren */
+/*! export removeClass [provided] [no usage info] [missing usage info prevents renaming] -> ./src/zz/utils/dom.js .removeClass */
+/*! export setAttrs [provided] [no usage info] [missing usage info prevents renaming] -> ./src/zz/utils/dom.js .setAttrs */
+/*! export subMonth [provided] [no usage info] [missing usage info prevents renaming] -> ./src/zz/utils/date.js .subMonth */
+/*! export tsEnumToObj [provided] [no usage info] [missing usage info prevents renaming] -> ./src/zz/utils/common.js .tsEnumToObj */
+/*! other exports [not provided] [no usage info] */
+/*! runtime requirements: __webpack_require__, __webpack_exports__, __webpack_require__.d, __webpack_require__.r, __webpack_require__.* */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "callCallbacks": () => /* reexport safe */ _common__WEBPACK_IMPORTED_MODULE_0__.callCallbacks,
+/* harmony export */   "deepcopy": () => /* reexport safe */ _common__WEBPACK_IMPORTED_MODULE_0__.deepcopy,
+/* harmony export */   "gcArr": () => /* reexport safe */ _common__WEBPACK_IMPORTED_MODULE_0__.gcArr,
+/* harmony export */   "gcObj": () => /* reexport safe */ _common__WEBPACK_IMPORTED_MODULE_0__.gcObj,
+/* harmony export */   "initCallback": () => /* reexport safe */ _common__WEBPACK_IMPORTED_MODULE_0__.initCallback,
+/* harmony export */   "isArr": () => /* reexport safe */ _common__WEBPACK_IMPORTED_MODULE_0__.isArr,
+/* harmony export */   "isFunc": () => /* reexport safe */ _common__WEBPACK_IMPORTED_MODULE_0__.isFunc,
+/* harmony export */   "isNaN": () => /* reexport safe */ _common__WEBPACK_IMPORTED_MODULE_0__.isNaN,
+/* harmony export */   "isObj": () => /* reexport safe */ _common__WEBPACK_IMPORTED_MODULE_0__.isObj,
+/* harmony export */   "judgeInterval": () => /* reexport safe */ _common__WEBPACK_IMPORTED_MODULE_0__.judgeInterval,
+/* harmony export */   "tsEnumToObj": () => /* reexport safe */ _common__WEBPACK_IMPORTED_MODULE_0__.tsEnumToObj,
+/* harmony export */   "addMonth": () => /* reexport safe */ _date__WEBPACK_IMPORTED_MODULE_1__.addMonth,
+/* harmony export */   "dateStrToDateObj": () => /* reexport safe */ _date__WEBPACK_IMPORTED_MODULE_1__.dateStrToDateObj,
+/* harmony export */   "fixYMAfterAdd": () => /* reexport safe */ _date__WEBPACK_IMPORTED_MODULE_1__.fixYMAfterAdd,
+/* harmony export */   "fixYMAfterSub": () => /* reexport safe */ _date__WEBPACK_IMPORTED_MODULE_1__.fixYMAfterSub,
+/* harmony export */   "getDateInfo": () => /* reexport safe */ _date__WEBPACK_IMPORTED_MODULE_1__.getDateInfo,
+/* harmony export */   "getDays": () => /* reexport safe */ _date__WEBPACK_IMPORTED_MODULE_1__.getDays,
+/* harmony export */   "getFirstDay": () => /* reexport safe */ _date__WEBPACK_IMPORTED_MODULE_1__.getFirstDay,
+/* harmony export */   "getLastDay": () => /* reexport safe */ _date__WEBPACK_IMPORTED_MODULE_1__.getLastDay,
+/* harmony export */   "getWeek": () => /* reexport safe */ _date__WEBPACK_IMPORTED_MODULE_1__.getWeek,
+/* harmony export */   "subMonth": () => /* reexport safe */ _date__WEBPACK_IMPORTED_MODULE_1__.subMonth,
+/* harmony export */   "addClass": () => /* reexport safe */ _dom__WEBPACK_IMPORTED_MODULE_2__.addClass,
+/* harmony export */   "createDom": () => /* reexport safe */ _dom__WEBPACK_IMPORTED_MODULE_2__.createDom,
+/* harmony export */   "getClassByInterval": () => /* reexport safe */ _dom__WEBPACK_IMPORTED_MODULE_2__.getClassByInterval,
+/* harmony export */   "initClass": () => /* reexport safe */ _dom__WEBPACK_IMPORTED_MODULE_2__.initClass,
+/* harmony export */   "isTag": () => /* reexport safe */ _dom__WEBPACK_IMPORTED_MODULE_2__.isTag,
+/* harmony export */   "parentAppendChildren": () => /* reexport safe */ _dom__WEBPACK_IMPORTED_MODULE_2__.parentAppendChildren,
+/* harmony export */   "removeClass": () => /* reexport safe */ _dom__WEBPACK_IMPORTED_MODULE_2__.removeClass,
+/* harmony export */   "setAttrs": () => /* reexport safe */ _dom__WEBPACK_IMPORTED_MODULE_2__.setAttrs
+/* harmony export */ });
+/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./common */ "./src/zz/utils/common.js");
+/* harmony import */ var _date__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./date */ "./src/zz/utils/date.js");
+/* harmony import */ var _dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./dom */ "./src/zz/utils/dom.js");
+
+
+
 
 /***/ })
 
@@ -2964,6 +2999,6 @@ function handleStepBigger(step, quan, pointers, ymCache, todayInfo, handleMonthF
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__("./src/zz/index.js");
 /******/ })()
-.zz;
+.default;
 });
 //# sourceMappingURL=zz.js.map

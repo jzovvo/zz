@@ -1,10 +1,9 @@
-import { createDom, judgeInterval, addClass, getClassByInterval } from '../../../utils'
-
+import { createDom, judgeInterval, addClass, getClassByInterval } from '../../utils'
 
 // init O1 Empty Doms
 export function initO1EmptyDoms(start, end, tag, cls) {
   const doms = []
-  for(let i = start; i <= end; i++) {
+  for (let i = start; i <= end; i++) {
     const dom = createDom(tag, '', cls)
     doms.push(dom)
   }
@@ -14,7 +13,7 @@ export function initO1EmptyDoms(start, end, tag, cls) {
 // init On Empty Doms
 export function initOnEmptyDoms(start, end, tag, count, baseCls, classes) {
   const doms = []
-  for(let i = start; i <= end; i++) {
+  for (let i = start; i <= end; i++) {
     const interval = judgeInterval(i, count)
     const sCls = getClassByInterval(interval, classes)
     const dom = createDom(tag, '', [...baseCls, ...sCls])
@@ -70,7 +69,7 @@ export function handleContentWeeksClass(weeks, classes) {
 // Month's Content Container
 function initMContentDom(weeks, opts, ym) {
   const { cls_monthContent, cls_w4Content, cls_w5Content, cls_w6Content, tag_monthContent } = opts
-  
+
   const classes = [cls_w4Content, cls_w5Content, cls_w6Content]
   const sCls = handleContentWeeksClass(weeks, classes)
   const mCD = createDom(tag_monthContent, '', [...cls_monthContent, ...sCls])
@@ -80,18 +79,16 @@ function initMContentDom(weeks, opts, ym) {
 
 // Year
 function initYDom(year, ymStatus, opts) {
-  const { 
+  const {
     yNames, tag_year,
-    cls_year, cls_passYear, cls_curYear, cls_unPassYear 
+    cls_year, cls_passYear, cls_curYear, cls_unPassYear
   } = opts
   const { yStatus } = ymStatus
 
   const classes = [cls_passYear, cls_curYear, cls_unPassYear]
   const sCls = getClassByInterval(yStatus, classes)
-  
   const yname = (yNames && yNames[year]) || year
   return createDom(tag_year, yname, [...cls_year, ...sCls])
-  
 }
 
 // Month
@@ -111,19 +108,18 @@ function initMDom(month, ymStatus, opts) {
 
 // Week
 export function initWDoms(start, end, ymStatus, opts) {
-  const { 
+  const {
     tag_week,
-    cls_week, cls_passWeek, cls_curWeek, cls_unPassWeek 
+    cls_week, cls_passWeek, cls_curWeek, cls_unPassWeek
   } = opts
   const { mStatus, wStatus } = ymStatus
-
 
   let wDoms;
   if (mStatus === 0) {
     const classes = [cls_passWeek, cls_curWeek, cls_unPassWeek]
     wDoms = initOnEmptyDoms(start, end, tag_week, wStatus, cls_week, classes)
   } else {
-    const sCls = mStatus === 1? cls_unPassWeek: cls_passWeek
+    const sCls = mStatus === 1 ? cls_unPassWeek : cls_passWeek
     wDoms = initO1EmptyDoms(start, end, tag_week, [...cls_week, ...sCls])
   }
   return wDoms
@@ -173,16 +169,16 @@ export function initEmptyBDDoms(ld, yms, opts) {
 export function initDDoms(start, end, yms, opts) {
   const {
     tag_date,
-    cls_date, cls_passDate, cls_curDate, cls_unPassDate 
+    cls_date, cls_passDate, cls_curDate, cls_unPassDate
   } = opts
   const { mStatus, dStatus } = yms
-  
+
   let dDoms;
   if (mStatus === 0) {
     const classes = [cls_passDate, cls_curDate, cls_unPassDate]
     dDoms = initOnCNDoms(start, end, tag_date, dStatus, cls_date, classes)
   } else {
-    const sCls = mStatus === 1? cls_unPassDate: cls_passDate
+    const sCls = mStatus === 1 ? cls_unPassDate : cls_passDate
     const cls = [...cls_date, ...sCls]
     dDoms = initO1CNDoms(start, end, tag_date, cls)
   }
@@ -203,7 +199,7 @@ function initYMDom(year, month, mInfo, opts) {
   const mWD = initMWrapDom(opts)
   const mHD = initMHeaderDom(opts)
   const mCD = initMContentDom(weeks, opts, { year, month })
-  
+
   if (!ignore || !ignore.includes('y')) {
     yD = initYDom(year, ymStatus, opts)
   }
@@ -214,7 +210,6 @@ function initYMDom(year, month, mInfo, opts) {
   const empFDDs = initEmptyFDDoms(firstDay, ymStatus, opts)
   const empBDDs = initEmptyBDDoms(lastDay, ymStatus, opts)
   const dDs = initDDoms(1, days, ymStatus, opts)
-  
 
   gc()
   return { mWD, mHD, mCD, yD, mD, wDs, wMD, empFDDs, empBDDs, dDs }

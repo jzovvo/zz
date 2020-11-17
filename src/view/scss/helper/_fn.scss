@@ -1,0 +1,3 @@
+@function date_h($total, $w) {
+  @return ($total / $w) - 2px;
+}

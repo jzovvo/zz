@@ -1,8 +1,6 @@
-
 import { initOptions, initYMData, initPointers, initDoms, initEvent } from './init'
 import { assyDoms } from './assembly'
-import { initCallback, callCallbacks } from '../utils'
-
+import { initCallback, callCallbacks } from './utils'
 
 function mount(selector, app) {
   const container = document.querySelector(selector)
@@ -15,7 +13,6 @@ function unmount(parent) {
 }
 
 export function calendar(options, cbs) {
-
   initCallback(options, cbs, true)
   const opts = initOptions(options)
   callCallbacks(cbs.onBeforeCreate, null, opts)
@@ -25,7 +22,6 @@ export function calendar(options, cbs) {
   const doms = initDoms(opts, ymData.ymCache)
   const integrFg = assyDoms(doms, opts)
 
-  
   initEvent(doms, opts, ymData, pointers, cbs)
   callCallbacks(cbs.onCreated, null, { opts, ymData, pointers, doms })
 

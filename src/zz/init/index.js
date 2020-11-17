@@ -4,5 +4,3 @@ export * from './initDoms'
 export * from './initPointers'
 export * from './initEvent'
 export * from './initCbs'
-
-

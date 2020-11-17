@@ -1,0 +1,30 @@
+/*! Base */
+@import 
+  '../../src/view/scss/base/reset';
+
+/*! Helper */
+@import 
+  '../../src/view/scss/helper/var',
+  '../../src/view/scss/helper/fn',
+  '../../src/view/scss/helper/mixin';
+
+
+/*! Component */
+@import
+  '../../src/view/scss/components/btns',
+  '../../src/view/scss/components/month';
+
+/*! cmz style*/
+.ym-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@for $i from 1 through 3 {
+  .container#{$i} {
+    border: 1px solid black;
+    position: relative;
+    padding: 50px 30px;
+    box-sizing: border-box;
+  }
+}
