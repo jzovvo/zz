@@ -1,16 +1,70 @@
 {
-  "scripts": {
-    "build": "webpack"
-  },
-  "author": "jyunzn <jyunzn@gmail.com>",
+  "name": "@jyunzn/zz",
+  "version": "0.0.0-alpha.2",
+  "description": "This is a calendar library",
+  "main": "dist/zz.min.js",
+  "jsdelivr": "dist/zz.min.js",
+  "unpkg": "dist/zz.min.js",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jyunzn/zz.git"
+  },
+  "homepage": "https://github.com/jyunzn/zz#readme",
+  "bugs": {
+    "url": "https://github.com/jyunzn/zz/issues"
+  },
+  "author": "jyunzn <jyunzn@gmail.com> (https://github.com/jyunzn)",
+  "files": [
+    "dist/",
+    "LICENSE",
+    "README.md",
+    "CHANGELOG.md",
+    "examples/"
+  ],
+  "keywords": [
+    "zz",
+    "zzscript",
+    "calendar",
+    "browser",
+    "library"
+  ],
+  "scripts": {
+    "help": "webpack --help",
+    "dev": "webpack serve --env m=dev --config ./build",
+    "build": "webpack --env m=build --mode development --config ./build",
+    "build:prod": "webpack --env m=build --mode production --output-filename 'zz.min.js' --config ./build"
+  },
   "devDependencies": {
     "@babel/core": "^7.12.3",
     "@babel/plugin-transform-runtime": "^7.12.1",
     "@babel/preset-env": "^7.12.1",
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
     "babel-loader": "^8.1.0",
     "core-js": "^3.6.5",
+    "css-loader": "^5.0.1",
+    "eslint": "^7.13.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "html-webpack-plugin": "^4.5.0",
+    "husky": "^4.3.0",
+    "lint-staged": "^10.5.1",
+    "node-sass": "^5.0.0",
+    "sass-loader": "^10.1.0",
+    "style-loader": "^2.0.0",
     "webpack": "^5.3.2",
-    "webpack-cli": "^4.1.0"
+    "webpack-cli": "^4.1.0",
+    "webpack-dev-server": "^3.11.0",
+    "webpack-merge": "^5.3.0"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": "eslint"
   }
 }
