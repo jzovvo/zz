@@ -1,18 +1,16 @@
 const path = require('path')
 
 module.exports = {
-  entry: path.resolve(__dirname, 'src', 'zzsper'),
+  entry: path.resolve(__dirname, '../src/zz/index.js'),
   output: {
-    filename: 'zzsper/dist/zzsper.min.js',
-    path: path.resolve(__dirname, 'npm'),
-    library: 'zzsper',
+    filename: 'zz.js',
+    path: path.resolve(__dirname, '..', 'dist'),
+    library: 'zz',
     libraryTarget: 'umd',
     globalObject: 'this',
-    libraryExport: 'zzsper',
+    libraryExport: 'default',
     umdNamedDefine: true
   },
-  mode: 'production',
-  // mode: 'development',
   module: {
     rules: [
       {
@@ -24,7 +22,7 @@ module.exports = {
             presets: [
               ['@babel/preset-env', { bugfixes: true, modules: false }]
             ],
-            plugins: [ 
+            plugins: [
               ['@babel/plugin-transform-runtime', {
                 useESModules: true
               }]
@@ -33,6 +31,5 @@ module.exports = {
         }
       }
     ]
-  },
-  devtool: 'source-map'
+  }
 }
