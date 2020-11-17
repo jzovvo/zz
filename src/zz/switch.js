@@ -1,6 +1,6 @@
-import { addMonth, subMonth, judgeInterval, addClass, removeClass, getClassByInterval, callCallbacks } from '../utils'
-import { 
-  getCache, handleContentWeeksClass, 
+import { addMonth, subMonth, judgeInterval, addClass, removeClass, getClassByInterval, callCallbacks } from './utils'
+import {
+  getCache, handleContentWeeksClass,
   initEmptyFDDoms, initEmptyBDDoms, initDDoms, initWDoms
 } from './init'
 import { assyContent } from './assembly'
@@ -27,62 +27,86 @@ function resetClassByInterval(dom, bS, nS, classes) {
   addClass(dom, addCls)
 }
 
+// handle class for dates and weeks
+function handleClassForDW(dom, bMS, nMS, beforeP, nextP, classes) {
+  if (bMS !== 0 && nMS !== 0) {
+    for (let i = 0; i < dom.length; i++) {
+      const dD = dom[i]
+      resetClassByInterval(dD, bMS, nMS, classes)
+    }
+  } else if (bMS !== 0) {
+    const removeCls = getClassByInterval(bMS, classes)
+    for (let i = 0; i < dom.length; i++) {
+      const dD = dom[i]
+      const date = i + 1
+      const interval = judgeInterval(date, nextP)
+      const addCls = getClassByInterval(interval, classes)
+      removeClass(dD, removeCls)
+      addClass(dD, addCls)
+    }
+  } else if (nMS !== 0) {
+    const addCls = getClassByInterval(nMS, classes)
+    for (let i = 0; i < dom.length; i++) {
+      const dD = dom[i]
+      const date = i + 1
+      const interval = judgeInterval(date, beforeP)
+      const removeCls = getClassByInterval(interval, classes)
+      removeClass(dD, removeCls)
+      addClass(dD, addCls)
+    }
+  }
+}
+
+function handleContentClass(mCD, diffM, opts) {
+  const { diffResult: { calcWs } } = diffM
+  if (calcWs !== 0) {
+    const { cls_w4Content, cls_w5Content, cls_w6Content } = opts
+    const { nextYMCache: { weeks: nWs }, beforeYMCache: { weeks: bWs } } = diffM
+
+    const classes = [cls_w4Content, cls_w5Content, cls_w6Content]
+    const removeCls = handleContentWeeksClass(bWs, classes)
+    const addCls = handleContentWeeksClass(nWs, classes)
+    removeClass(mCD, removeCls)
+    addClass(mCD, addCls)
+  }
+}
+
+function handleContentYMFlag(mCD, diffM) {
+  mCD.$_ym = diffM.nextYM
+}
+
 // step1. diff
 function diff(nextYMCache, beforeYMCache) {
-  const { firstDay: nFd, lastDay: nLd, days: nDs, weeks: nWs, ymStatus: { yStatus: nYS, mStatus: nMS } } = nextYMCache
-  const { firstDay: bFd, lastDay: bLd, days: bDs, weeks: bWs, ymStatus: { yStatus: bYS, mStatus: bMS } } = beforeYMCache
+  const {
+    firstDay: nFd,
+    lastDay: nLd,
+    days: nDs,
+    weeks: nWs,
+    ymStatus: {
+      yStatus: nYS, mStatus: nMS
+    }
+  } = nextYMCache
+  const {
+    firstDay: bFd,
+    lastDay: bLd,
+    days: bDs,
+    weeks: bWs,
+    ymStatus: {
+      yStatus: bYS,
+      mStatus: bMS
+    } } = beforeYMCache
 
   const calcFD = nFd - bFd
   const calcLD = nLd - bLd
   const calcDs = nDs - bDs
   const calcWs = nWs - bWs
   const statusChange = {
-    ys: nYS === bYS ? false: true,
-    ms: nMS === bMS ? false: true
+    ys: nYS !== bYS,
+    ms: nMS !== bMS
   }
   return { calcFD, calcLD, calcDs, calcWs, statusChange }
 }
 
-// step2. move
-function moveDoms(doms, diffMs, direct, opts, cbs) {
-
-  const { ymCD, ymDs } = doms
-  const { quan } = opts
-  const len = diffMs.length
-
-  let fg = node2FragmentFromLast(ymCD)
-
-  let needResetDoms = null;
-  let unNeedResetDoms = null;
-  if (len < quan) {
-    const { fgForBeMoveDom, fgForUnMoveDom } = getBeMoveDoms(fg, direct, len)
-    needResetDoms = fgForBeMoveDom
-    unNeedResetDoms = fgForUnMoveDom
-  } else {
-    fg = node2FragmentFromLast(fg)
-    needResetDoms = fg
-  }
-
-  callCallbacks(cbs.onBeforeDomBeReset, null, { doms, diffMs, direct, opts, needResetDoms, unNeedResetDoms })
-  resetBeMoveDoms(needResetDoms, diffMs, opts, ymDs, cbs)
-  callCallbacks(cbs.onDomBeReseted, null, { doms, diffMs, direct, opts, needResetDoms, unNeedResetDoms })
-
-  if (len < quan) {
-    if (direct === 'prev') {
-      needResetDoms = node2FragmentFromLast(needResetDoms)
-      ymCD.appendChild(needResetDoms)
-      ymCD.appendChild(unNeedResetDoms)
-    } else if (direct === 'next') {
-      unNeedResetDoms = node2FragmentFromLast(unNeedResetDoms)
-      ymCD.appendChild(unNeedResetDoms)
-      ymCD.appendChild(needResetDoms)
-    }
-  } else {
-    ymCD.appendChild(needResetDoms)
-  }
-}
-
-// step2.1 getBeMoveDom
 /**
  * @param fg all yearMonthContentDom's Children By Backward
  * @param direct click direct
@@ -99,38 +123,12 @@ function getBeMoveDoms(fg, direct, len) {
   }
 
   const children = [...fg.children]
-  for(let i = 0; i < len; i++) {
+  for (let i = 0; i < len; i++) {
     const child = children.pop()
     fgForBeMoveDom.appendChild(child)
   }
 
   return { fgForBeMoveDom, fgForUnMoveDom: fg }
-}
-
-// step2.2 resetBeMoveDom
-function resetBeMoveDoms(needResetDoms, diffMs, opts, ymDs, cbs) {
-  const children = needResetDoms.children
-  const len = children.length
-  for (let i = 0; i < len; i++) {
-    const mWD = children[i]
-    const diffM = diffMs[i]
-    const headerDs = resetBeMoveDomsHeader(mWD, diffM, opts)
-    const contentDs = resetBeMoveDomsContent(mWD, diffM, opts)
-    resetYMDs(ymDs, diffM, { ...headerDs, ...contentDs, mWD})
-    callCallbacks(cbs.onBeforeDomBeAssyAtResetDom, null, { mWD, diffM, headerDs, contentDs, opts, ymDs, needResetDoms, diffMs })
-    assyContent(contentDs)
-    callCallbacks(cbs.onDomBeAssyAtResetDom, null, { mWD, diffM, headerDs, contentDs, opts, ymDs, needResetDoms, diffMs })
-  }
-}
-
-function resetBeMoveDomsHeader(mWD, diffM, opts) {
-  const { cls_monthHeader } = opts
-  const mHD = mWD.querySelector(`.${cls_monthHeader[0]}`)
-  if (!mHD) return null
-  
-  const yD = resetBeMoveDomsYear(mHD, diffM, opts)
-  const mD = resetBeMoveDomsMonth(mHD, diffM, opts)
-  return { mHD, yD, mD }
 }
 
 function resetBeMoveDomsYear(mHD, diffM, opts) {
@@ -142,7 +140,7 @@ function resetBeMoveDomsYear(mHD, diffM, opts) {
     diffResult: { statusChange: { ys } },
     nextYM: { year }
   } = diffM
-  
+
   const yName = (yNames && yNames[year]) || year
   yD.textContent = yName
 
@@ -169,7 +167,7 @@ function resetBeMoveDomsMonth(mHD, diffM, opts) {
   } = diffM
 
   const mName = mNames[month]
-  
+
   mD.textContent = mName
 
   if (ms) {
@@ -186,81 +184,6 @@ function resetBeMoveDomsMonth(mHD, diffM, opts) {
   return mD
 }
 
-function resetBeMoveDomsContent(mWD, diffM, opts) {
-  const { cls_monthContent, cls_weekMarkWrap } = opts
-  const mCD = mWD.querySelector(`.${cls_monthContent[0]}`)
-  if (!mCD) return null
-
-  handleContentClass(mCD, diffM, opts)
-  handleContentYMFlag(mCD, diffM)
-  
-  const wMD = mWD.querySelector(`.${cls_weekMarkWrap[0]}`)
-  const empFDDs = resetBeMoveDomsEmpFDDs(mCD, diffM, opts)
-  const empBDDs = resetBeMoveDomsEmpBDDs(mCD, diffM, opts)
-  const dDs = resetBeMoveDomsDDs(mCD, diffM, opts)
-  const wDs =  resetBeMoveDomsWDs(mCD, diffM, opts)
-  mCD.textContent = ''
-
-  return { mCD, wDs, wMD, empFDDs, empBDDs, dDs }
-}
-
-function handleContentClass(mCD, diffM, opts) {
-  const { diffResult: { calcWs } } = diffM
-  if (calcWs !== 0) {
-    const { cls_w4Content, cls_w5Content, cls_w6Content } = opts
-    const { nextYMCache: { weeks: nWs }, beforeYMCache: { weeks: bWs } } = diffM
-
-    const classes = [cls_w4Content, cls_w5Content, cls_w6Content]
-    const removeCls = handleContentWeeksClass(bWs, classes)
-    const addCls = handleContentWeeksClass(nWs, classes)
-    removeClass(mCD, removeCls)
-    addClass(mCD, addCls)
-  }
-}
-
-function handleContentYMFlag(mCD, diffM) {
-  mCD.$_ym = diffM.nextYM
-}
-
-function resetBeMoveDomsWDs(mCD, diffM, opts) {
-  const { cls_week } = opts
-  const { diffResult: { calcWs, statusChange: { ms } } } = diffM
-  let wDs = mCD.querySelectorAll(`.${cls_week[0]}`)
-  if (!wDs) return null
-
-  wDs = [...wDs]
-
-  let newWDs = []
-  if (calcWs > 0) {
-    const {
-      beforeYMCache: { weeks: bWs },
-      nextYMCache: { weeks: nWs, ymStatus }
-    } = diffM
-    newWDs = initWDoms(bWs + 1, nWs, ymStatus, opts)
-  } else if (calcWs < 0) {
-    for (let i = 0; i < Math.abs(calcWs); i++) {
-      wDs.pop()
-    }
-  }
-
-  if (ms) {
-    const {
-      beforeYMCache: { ymStatus: { mStatus: bMS, wStatus: bWS }},
-      nextYMCache: { ymStatus: { mStatus: nMS, wStatus: nWS }}
-    } = diffM
-    const { cls_passWeek, cls_curWeek, cls_unPassWeek } = opts
-    const classes = [cls_passWeek, cls_curWeek, cls_unPassWeek]
-    handleClassForDW(wDs, bMS, nMS, bWS, nWS, classes)
-  }
-
-  for (let i = 0; i < wDs.length; i++) {
-    const wD = wDs[i]
-    wD.textContent = ''
-  }
-
-  return [...wDs, ...newWDs]
-}
-
 function resetBeMoveDomsEmpFDDs(mCD, diffM, opts) {
   const { cls_empFDate } = opts
   const { diffResult: { calcFD, statusChange: { ms } } } = diffM
@@ -274,7 +197,7 @@ function resetBeMoveDomsEmpFDDs(mCD, diffM, opts) {
     const { nextYMCache: { ymStatus } } = diffM
     newEmpFDDs = initEmptyFDDoms(calcFD, ymStatus, opts)
   } else if (calcFD < 0) {
-    for (let i = 0 ; i < Math.abs(calcFD); i++) {
+    for (let i = 0; i < Math.abs(calcFD); i++) {
       empFDDs.pop()
     }
   }
@@ -287,7 +210,7 @@ function resetBeMoveDomsEmpFDDs(mCD, diffM, opts) {
 
     if ((nMS <= 0 && bMS > 0) || (nMS > 0 && bMS <= 0)) {
       const { cls_passEmpFDate, cls_unPassEmpFDate } = opts
-      const classes = [ cls_passEmpFDate, cls_passEmpFDate, cls_unPassEmpFDate ]
+      const classes = [cls_passEmpFDate, cls_passEmpFDate, cls_unPassEmpFDate]
       for (let i = 0; i < empFDDs.length; i++) {
         const empFDD = empFDDs[i]
         resetClassByInterval(empFDD, bMS, nMS, classes)
@@ -311,7 +234,7 @@ function resetBeMoveDomsEmpBDDs(mCD, diffM, opts) {
     const { nextYMCache: { ymStatus } } = diffM
     newEmpBDDs = initEmptyBDDoms(6 - Math.abs(calcLD), ymStatus, opts)
   } else if (calcLD > 0) {
-    for (let i = 0 ; i < calcLD; i++) {
+    for (let i = 0; i < calcLD; i++) {
       empBDDs.pop()
     }
   }
@@ -321,10 +244,10 @@ function resetBeMoveDomsEmpBDDs(mCD, diffM, opts) {
       nextYMCache: { ymStatus: { mStatus: nMS } },
       beforeYMCache: { ymStatus: { mStatus: bMS } }
     } = diffM
-    
+
     if ((nMS < 0 && bMS >= 0) || (nMS >= 0 && bMS < 0)) {
       const { cls_passEmpBDate, cls_unPassEmpBDate } = opts
-      const classes = [ cls_passEmpBDate, cls_unPassEmpBDate, cls_unPassEmpBDate ]
+      const classes = [cls_passEmpBDate, cls_unPassEmpBDate, cls_unPassEmpBDate]
       for (let i = 0; i < empBDDs.length; i++) {
         const empBDD = empBDDs[i]
         resetClassByInterval(empBDD, bMS, nMS, classes)
@@ -358,8 +281,8 @@ function resetBeMoveDomsDDs(mCD, diffM, opts) {
 
   if (ms) {
     const {
-      beforeYMCache: { ymStatus: { mStatus: bMS, dStatus: bDS }},
-      nextYMCache: { ymStatus: { mStatus: nMS, dStatus: nDS }}
+      beforeYMCache: { ymStatus: { mStatus: bMS, dStatus: bDS } },
+      nextYMCache: { ymStatus: { mStatus: nMS, dStatus: nDS } }
     } = diffM
     const { cls_passDate, cls_curDate, cls_unPassDate } = opts
     const classes = [cls_passDate, cls_curDate, cls_unPassDate]
@@ -369,34 +292,71 @@ function resetBeMoveDomsDDs(mCD, diffM, opts) {
   return [...dDs, ...newDDs]
 }
 
-// handle class for dates and weeks
-function handleClassForDW(dom, bMS, nMS, beforeP, nextP, classes) {
-  if (bMS !== 0 && nMS !== 0) {
-    for (let i = 0; i < dom.length; i++) {
-      const dD = dom[i]
-      resetClassByInterval(dD, bMS, nMS, classes)
-    }
-  } else if (bMS !== 0) {
-    const removeCls = getClassByInterval(bMS, classes)
-    for (let i = 0; i < dom.length; i++) {
-      const dD = dom[i]
-      const date = i + 1
-      const interval = judgeInterval(date, nextP)
-      const addCls = getClassByInterval(interval, classes)
-      removeClass(dD, removeCls)
-      addClass(dD, addCls)
-    }
-  } else if (nMS !== 0) {
-    const addCls = getClassByInterval(nMS, classes)
-    for (let i = 0; i < dom.length; i++) { 
-      const dD = dom[i]
-      const date = i + 1
-      const interval = judgeInterval(date, beforeP)
-      const removeCls = getClassByInterval(interval, classes)
-      removeClass(dD, removeCls)
-      addClass(dD, addCls)
+function resetBeMoveDomsWDs(mCD, diffM, opts) {
+  const { cls_week } = opts
+  const { diffResult: { calcWs, statusChange: { ms } } } = diffM
+  let wDs = mCD.querySelectorAll(`.${cls_week[0]}`)
+  if (!wDs) return null
+
+  wDs = [...wDs]
+
+  let newWDs = []
+  if (calcWs > 0) {
+    const {
+      beforeYMCache: { weeks: bWs },
+      nextYMCache: { weeks: nWs, ymStatus }
+    } = diffM
+    newWDs = initWDoms(bWs + 1, nWs, ymStatus, opts)
+  } else if (calcWs < 0) {
+    for (let i = 0; i < Math.abs(calcWs); i++) {
+      wDs.pop()
     }
   }
+
+  if (ms) {
+    const {
+      beforeYMCache: { ymStatus: { mStatus: bMS, wStatus: bWS } },
+      nextYMCache: { ymStatus: { mStatus: nMS, wStatus: nWS } }
+    } = diffM
+    const { cls_passWeek, cls_curWeek, cls_unPassWeek } = opts
+    const classes = [cls_passWeek, cls_curWeek, cls_unPassWeek]
+    handleClassForDW(wDs, bMS, nMS, bWS, nWS, classes)
+  }
+
+  for (let i = 0; i < wDs.length; i++) {
+    const wD = wDs[i]
+    wD.textContent = ''
+  }
+
+  return [...wDs, ...newWDs]
+}
+
+function resetBeMoveDomsHeader(mWD, diffM, opts) {
+  const { cls_monthHeader } = opts
+  const mHD = mWD.querySelector(`.${cls_monthHeader[0]}`)
+  if (!mHD) return null
+
+  const yD = resetBeMoveDomsYear(mHD, diffM, opts)
+  const mD = resetBeMoveDomsMonth(mHD, diffM, opts)
+  return { mHD, yD, mD }
+}
+
+function resetBeMoveDomsContent(mWD, diffM, opts) {
+  const { cls_monthContent, cls_weekMarkWrap } = opts
+  const mCD = mWD.querySelector(`.${cls_monthContent[0]}`)
+  if (!mCD) return null
+
+  handleContentClass(mCD, diffM, opts)
+  handleContentYMFlag(mCD, diffM)
+
+  const wMD = mWD.querySelector(`.${cls_weekMarkWrap[0]}`)
+  const empFDDs = resetBeMoveDomsEmpFDDs(mCD, diffM, opts)
+  const empBDDs = resetBeMoveDomsEmpBDDs(mCD, diffM, opts)
+  const dDs = resetBeMoveDomsDDs(mCD, diffM, opts)
+  const wDs = resetBeMoveDomsWDs(mCD, diffM, opts)
+  mCD.textContent = ''
+
+  return { mCD, wDs, wMD, empFDDs, empBDDs, dDs }
 }
 
 /**
@@ -411,6 +371,109 @@ function resetYMDs(ymDs, diffM, doms) {
   ymDs[ny] || (ymDs[ny] = {})
   ymDs[ny][nm] = doms
   delete ymDs[by][bm]
+}
+
+// step2. move
+function resetBeMoveDoms(needResetDoms, diffMs, opts, ymDs, cbs) {
+  const { children } = needResetDoms
+  const len = children.length
+  for (let i = 0; i < len; i++) {
+    const mWD = children[i]
+    const diffM = diffMs[i]
+    const headerDs = resetBeMoveDomsHeader(mWD, diffM, opts)
+    const contentDs = resetBeMoveDomsContent(mWD, diffM, opts)
+    resetYMDs(ymDs, diffM, { ...headerDs, ...contentDs, mWD })
+    callCallbacks(cbs.onBeforeDomBeAssyAtResetDom, null, {
+      mWD, diffM, headerDs, contentDs, opts, ymDs, needResetDoms, diffMs
+    })
+    assyContent(contentDs)
+    callCallbacks(cbs.onDomBeAssyAtResetDom, null, {
+      mWD, diffM, headerDs, contentDs, opts, ymDs, needResetDoms, diffMs
+    })
+  }
+}
+
+function moveDoms(doms, diffMs, direct, opts, cbs) {
+  const { ymCD, ymDs } = doms
+  const { quan } = opts
+  const len = diffMs.length
+
+  let fg = node2FragmentFromLast(ymCD)
+
+  let needResetDoms = null;
+  let unNeedResetDoms = null;
+  if (len < quan) {
+    const { fgForBeMoveDom, fgForUnMoveDom } = getBeMoveDoms(fg, direct, len)
+    needResetDoms = fgForBeMoveDom
+    unNeedResetDoms = fgForUnMoveDom
+  } else {
+    fg = node2FragmentFromLast(fg)
+    needResetDoms = fg
+  }
+
+  callCallbacks(cbs.onBeforeDomBeReset, null, {
+    doms, diffMs, direct, opts, needResetDoms, unNeedResetDoms
+  })
+  resetBeMoveDoms(needResetDoms, diffMs, opts, ymDs, cbs)
+  callCallbacks(cbs.onDomBeReseted, null, {
+    doms, diffMs, direct, opts, needResetDoms, unNeedResetDoms
+  })
+
+  if (len < quan) {
+    if (direct === 'prev') {
+      needResetDoms = node2FragmentFromLast(needResetDoms)
+      ymCD.appendChild(needResetDoms)
+      ymCD.appendChild(unNeedResetDoms)
+    } else if (direct === 'next') {
+      unNeedResetDoms = node2FragmentFromLast(unNeedResetDoms)
+      ymCD.appendChild(unNeedResetDoms)
+      ymCD.appendChild(needResetDoms)
+    }
+  } else {
+    ymCD.appendChild(needResetDoms)
+  }
+}
+
+function handleStepBigger(step, quan, pointers, ymCache, todayInfo, handleMonthFn) {
+  const { pL, pR } = pointers
+  const beforePoint = { ...pL }
+  handleMonthFn(pL, step)
+  handleMonthFn(pR, step)
+  const nextPoint = { ...pL }
+
+  const diffMs = []
+  for (let i = 0; i < quan; i++) {
+    const beforeYM = { ...beforePoint }
+    const beforeYMCache = getCache(beforePoint, ymCache, todayInfo)
+    const nextYM = { ...nextPoint }
+    const nextYMCache = getCache(nextPoint, ymCache, todayInfo)
+    const diffResult = diff(nextYMCache, beforeYMCache)
+
+    addMonth(beforePoint, 1)
+    addMonth(nextPoint, 1)
+
+    diffMs.push({ beforeYMCache, nextYMCache, beforeYM, nextYM, diffResult })
+  }
+  return diffMs
+}
+
+function handleStepSmaller(step, pointers, ymCache, todayInfo, handleMonthFn) {
+  const { beforeP, nextP } = pointers
+
+  const diffMs = []
+  for (let i = 0; i < step; i++) {
+    const beforeYMCache = ymCache[beforeP.year][beforeP.month]
+    const beforeYM = { ...beforeP }
+
+    handleMonthFn(beforeP, 1)
+    handleMonthFn(nextP, 1)
+
+    const nextYMCache = getCache(nextP, ymCache, todayInfo)
+    const nextYM = { ...nextP }
+    const diffResult = diff(nextYMCache, beforeYMCache)
+    diffMs.push({ beforeYMCache, nextYMCache, beforeYM, nextYM, diffResult })
+  }
+  return diffMs
 }
 
 export function goBack(step, doms, opts, ymData, pointers, cbs) {
@@ -444,49 +507,7 @@ export function goNext(step, doms, opts, ymData, pointers, cbs) {
   } else {
     diffMs = handleStepBigger(step, quan, pointers, ymCache, todayInfo, addMonth)
   }
-  
+
   moveDoms(doms, diffMs, 'next', opts, cbs)
   callCallbacks(cbs.onNexted, null, { doms, diffMs, opts, step, ymData, pointers })
-}
-
-function handleStepSmaller(step, pointers, ymCache, todayInfo, handleMonthFn) {
-  const { beforeP, nextP } = pointers
-  
-  const diffMs = []
-  for (let i = 0; i < step; i++) {
-    const beforeYMCache = ymCache[beforeP.year][beforeP.month]
-    const beforeYM = { ...beforeP }
-    
-    handleMonthFn(beforeP, 1)
-    handleMonthFn(nextP, 1)
-
-    const nextYMCache = getCache(nextP, ymCache, todayInfo)
-    const nextYM = { ...nextP }
-    const diffResult = diff(nextYMCache, beforeYMCache)
-    diffMs.push({ beforeYMCache, nextYMCache, beforeYM, nextYM, diffResult })
-  }
-  return diffMs
-}
-
-function handleStepBigger(step, quan, pointers, ymCache, todayInfo, handleMonthFn) {
-  const { pL, pR } = pointers
-  const beforePoint = { ...pL }
-  handleMonthFn(pL, step)
-  handleMonthFn(pR, step)
-  const nextPoint = { ...pL }
-
-  const diffMs = []
-  for (let i = 0; i < quan; i++) {
-    const beforeYM = { ...beforePoint }
-    const beforeYMCache = getCache(beforePoint, ymCache, todayInfo)
-    const nextYM = { ...nextPoint }
-    const nextYMCache = getCache(nextPoint, ymCache, todayInfo)
-    const diffResult = diff(nextYMCache, beforeYMCache)
-
-    addMonth(beforePoint, 1)
-    addMonth(nextPoint, 1)
-
-    diffMs.push({ beforeYMCache, nextYMCache, beforeYM, nextYM, diffResult })
-  }
-  return diffMs
 }

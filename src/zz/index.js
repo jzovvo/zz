@@ -1,11 +1,12 @@
 import { calendar } from './calendar'
-import { isObj, isFunc, gcObj, gcArr, callCallbacks } from '../utils'
+import { isObj, gcObj, gcArr, callCallbacks } from './utils'
 import { initCbs } from './init'
+import { use, mixin } from './global'
 
 let plugins = []
 let mixins = []
 
-export function zz(option) {
+export default function zz(option) {
   option = isObj(option) ? option : {}
 
   if (plugins) {
@@ -16,13 +17,11 @@ export function zz(option) {
     gcArr(plugins)
     plugins = null
   }
-  
-  let cbs = initCbs(mixins)
 
+  let cbs = initCbs(mixins)
   let app = calendar(option, cbs)
 
-  let mount = app.mount
-  let unmount = app.unmount
+  let { mount, unmount } = app
 
   let parent;
   app.mount = (select) => {
@@ -57,17 +56,5 @@ export function zz(option) {
   return app
 }
 
-
-zz.use = (plugin) => {
-  if ((isObj(plugin) || isFunc(plugin)) && !plugins.includes(plugin)) {
-    const install = plugin.install
-    if (install && isFunc(install)) {
-      plugins.push(plugin)
-    }
-  }
-}
-
-
-zz.mixin = (cbObj) => {
-  cbObj && isObj(cbObj) && mixins.push(cbObj)
-}
+zz.use = plugin => use(plugin, plugins)
+zz.mixin = cb => mixin(cb, mixins)

@@ -1,3 +1,5 @@
+import { isNaN } from './common'
+
 export const dateStrToDateObj = dateStr => {
   if (typeof dateStr !== 'string' || !dateStr.includes('-')) {
     return null
@@ -17,9 +19,8 @@ export const getDateInfo = dObj => {
   const year = dObj.getFullYear()
   const month = dObj.getMonth() + 1
   const date = dObj.getDate()
-  return { year, month, date } 
+  return { year, month, date }
 }
-
 
 function isLeapYear(year) {
   return (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0)
@@ -28,10 +29,10 @@ function isLeapYear(year) {
 export const getDays = (year, month) => {
   const day30 = [4, 6, 8, 9, 11];
   const day31 = [1, 3, 5, 7, 8, 10, 12];
-  let days = 
+  let days =
     day31.includes(month) ? 31 :
-    day30.includes(month) ? 30 :
-    isLeapYear(year) ? 29 : 28;
+      day30.includes(month) ? 30 :
+        isLeapYear(year) ? 29 : 28;
 
   return days
 }

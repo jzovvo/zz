@@ -1,0 +1,11 @@
+.container {
+  border: 1px solid black;
+  position: relative;
+  padding: 50px 30px;
+  box-sizing: border-box;
+}
+
+.ym-container {
+  display: flex;
+  flex-wrap: wrap;
+}

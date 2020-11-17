@@ -1,7 +1,6 @@
 import { initYMDoms, initYMContainer } from './initYMDoms'
 import { initSwBtnDoms } from './initSwBtnDoms'
 
-
 export * from './initYMDoms'
 
 export function initDoms(opts, mCache) {

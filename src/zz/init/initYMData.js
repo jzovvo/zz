@@ -1,13 +1,10 @@
-import { getDateInfo, getDays, getFirstDay, getLastDay, getWeek, addMonth } from '../../utils'
-
-
+import { getDateInfo, getDays, getFirstDay, getLastDay, getWeek, addMonth } from '../utils'
 
 function initTodayInfo() {
   const todayObj = new Date()
   const dateInfo = getDateInfo(todayObj)
   return { todayObj, ...dateInfo }
 }
-
 
 function getYMStatus(ymInfo, todayInfo) {
   const { year, month, firstDay } = ymInfo
@@ -26,15 +23,12 @@ function getYMStatus(ymInfo, todayInfo) {
       wStatus = getWeek(firstDay + todayD)
     } else if (month > todayM) {
       mStatus = 1
-      
     } else {
       mStatus = -1
-      
     }
   } else if (year > todayY) {
     yStatus = 1
     mStatus = 1
-    
   } else {
     yStatus = -1
     mStatus = -1
@@ -54,7 +48,7 @@ function initYMCache(ym, ymCache, today) {
   const firstDay = getFirstDay(dObj)
   const lastDay = getLastDay(firstDay, days)
   const weeks = getWeek(firstDay + days)
-  const ymStatus = getYMStatus({ year, month, firstDay}, today)
+  const ymStatus = getYMStatus({ year, month, firstDay }, today)
 
   const c = { days, firstDay, lastDay, weeks, ymStatus }
   ymCache[year][month] = c

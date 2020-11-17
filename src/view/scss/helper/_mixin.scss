@@ -1,0 +1,35 @@
+%btn {
+  background: black;
+  position: absolute;
+  color: white;
+
+  line-height: 30px;
+  padding: 5px 20px;
+  text-align: center;
+
+  cursor: pointer;
+}
+
+%text_ed {
+  color: $color_ed;
+}
+
+%text_ing {
+  color: $color_ing;
+}
+
+%text_will {
+  color: $color_will;
+}
+
+%bg_ed {
+  background-color: $color_ed;
+}
+
+%bg_ing {
+  background-color: $color_ing;
+}
+
+%bg_will {
+  background-color: $color_will;
+}

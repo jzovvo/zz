@@ -1,0 +1,19 @@
+i,
+ul,
+li,
+div,
+body,
+html {
+  padding: 0;
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+ul,
+li,
+div {
+  box-sizing: border-box;
+}

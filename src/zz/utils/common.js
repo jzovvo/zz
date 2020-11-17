@@ -8,7 +8,7 @@ export const isNaN = input => typeof input === 'number' && input !== input
  * @param refP 參考點
  * @param point 判斷點
  * @return -1: 左, 0: 當前, 1: 右
- */ 
+ */
 export function judgeInterval(refP, point) {
   if (refP < point) {
     return -1
@@ -20,7 +20,6 @@ export function judgeInterval(refP, point) {
     throw new Error('judgeInterval params is wrong')
   }
 }
-
 
 export function gcObj(obj) {
   for (let key in obj) {
@@ -60,7 +59,6 @@ export function deepcopy(target) {
     return target
   }
 }
-
 
 export function initCallback(cbObj, cbs, del) {
   for (let key in cbs) {

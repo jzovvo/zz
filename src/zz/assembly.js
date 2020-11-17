@@ -1,4 +1,38 @@
-import { parentAppendChildren } from '../utils'
+import { parentAppendChildren } from './utils'
+
+function assyHeader({ mHD, yD, mD }, ymPos) {
+  if (ymPos === 'ym') {
+    yD && mHD.appendChild(yD)
+    mD && mHD.appendChild(mD)
+  } else if (ymPos === 'my') {
+    mD && mHD.appendChild(mD)
+    yD && mHD.appendChild(yD)
+  }
+
+  return mHD
+}
+
+export function assyContent({ mCD, wDs, wMD, empFDDs, empBDDs, dDs }) {
+  wMD && mCD.appendChild(wMD)
+
+  const dDoms = [...empFDDs, ...dDs, ...empBDDs]
+  let j = -1
+  for (let i = 0; i < dDoms.length; i++) {
+    if (i % 7 === 0) {
+      j++
+    }
+    wDs[j].appendChild(dDoms[i])
+  }
+
+  parentAppendChildren(mCD, wDs)
+  return mCD
+}
+
+function assyWrap({ mWD, header, content }) {
+  mWD.appendChild(header)
+  mWD.appendChild(content)
+  return mWD
+}
 
 /**
  * @description assembly year month doms
@@ -19,41 +53,6 @@ function assyYMD(ymDs, ymCD, opts) {
   }
   return ymCD
 }
-
-function assyHeader({ mHD, yD, mD }, ymPos) {
-  if (ymPos === 'ym') {
-    yD && mHD.appendChild(yD)
-    mD && mHD.appendChild(mD)
-  } else if (ymPos === 'my') {
-    mD && mHD.appendChild(mD)
-    yD && mHD.appendChild(yD)
-  }
-  
-  return mHD
-}
-
-export function assyContent({ mCD, wDs, wMD, empFDDs, empBDDs, dDs }) {
-  wMD && mCD.appendChild(wMD)
-
-  const dDoms = [...empFDDs, ...dDs, ...empBDDs]
-  let j = -1
-  for(let i = 0; i < dDoms.length; i++) {
-    if (i % 7 ===0) {
-      j++
-    }
-    wDs[j].appendChild(dDoms[i])
-  }
-
-  parentAppendChildren(mCD, wDs)
-  return mCD
-}
-
-function assyWrap({ mWD, header, content }) {
-  mWD.appendChild(header)
-  mWD.appendChild(content)
-  return mWD
-}
-
 
 function assyIntegrDom(doms) {
   const fg = document.createDocumentFragment()

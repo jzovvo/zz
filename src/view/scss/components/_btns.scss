@@ -1,0 +1,10 @@
+.prev-btn {
+  @extend %btn;
+  top: 0;
+  left: 0;
+}
+.next-btn {
+  @extend %btn;
+  top: 0;
+  right: 0;
+}

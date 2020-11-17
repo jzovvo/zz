@@ -1,0 +1,71 @@
+.month {
+  &-header {
+    text-align: center;
+    .pass-y {
+      @extend %text_ed;
+    }
+    .pass-m {
+      @extend %text_ed;
+    }
+    .cur-y {
+      @extend %text_ing;
+    }
+    .cur-m {
+      @extend %text_ing;
+    }
+    .unpass-y {
+      @extend %text_will;
+    }
+    .unpass-m {
+      @extend %text_will;
+    }
+    .year {
+      margin-right: 10px;
+    }
+  }
+  &-content {
+    ul {
+      display: flex;
+    }
+    li {
+      width: 30px;
+      text-align: right;
+    }
+    .pass-w {
+      border: 1px solid silver;
+    }
+    .pass-d {
+      @extend %text_ed;
+    }
+    .pass-emp-f {
+      @extend %bg_ed;
+    }
+    .pass-emp-b {
+      @extend %bg_ed;
+    }
+    .cur-w {
+      border: 1px solid skyblue;
+    }
+    .cur-d {
+      @extend %text_ing;
+    }
+    .unpass-w {
+      border: 1px solid pink;
+    }
+    .unpass-d {
+      @extend %text_will;
+    }
+    .unpass-emp-f {
+      @extend %bg_will;
+    }
+    .unpass-emp-b {
+      @extend %bg_will;
+    }
+  }
+}
+
+@for $i from 4 through 6 {
+  .w-#{$i} .week {
+    line-height: date_h(180, $i);
+  }
+}

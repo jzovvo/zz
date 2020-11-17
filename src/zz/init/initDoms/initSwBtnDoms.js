@@ -1,25 +1,25 @@
-
-import { isObj } from '../../../utils'
+import { isObj } from '../../utils'
 
 function createEl(tag, attrs, children) {
   const parent = document.createElement(tag)
   if (isObj(attrs)) {
-    for(let key in attrs) {
+    for (let key in attrs) {
       if (key === 'style') {
         const oStyle = attrs[key]
         if (typeof oStyle === 'string') {
           parent.setAttribute('style', oStyle)
-        }  else if (isObj(oStyle)){
+        } else if (isObj(oStyle)) {
           for (let key_s in oStyle) {
             parent.style[key_s] = oStyle[key_s]
           }
         }
-      } else if (key !== 'direct' || key !== 'step') { 
+      } else if (key !== 'direct' || key !== 'step') {
         parent.setAttribute(key, attrs[key])
       }
     }
   }
 
+  // eslint-disable-next-line
   handleChildren(children, parent)
   return parent
 }
@@ -36,7 +36,6 @@ function handleChildren(elem, parent) {
     }
   }
 }
-
 
 export function initSwBtnDoms(opts) {
   const { swBtns } = opts
