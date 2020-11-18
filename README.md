@@ -73,6 +73,26 @@ npm install @jyunzn/zz
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <!-- set some style -->
+    <link href="https://cdn.jsdelivr.net/gh/jyunzn/zz@0.0.0-alpha.3/examples/default.min.css" rel="stylesheet"/>
+    <style>
+      .caledar {
+        border: 1px solid black;
+        position: relative;
+        padding: 50px 30px;
+        box-sizing: border-box;
+      }
+
+      .prev-btn.p_btn1 {
+        left: 100px;
+      }
+
+      .next-btn.n_btn1 {
+        right: 100px;
+      }
+    </style>
+    <script src="https://kit.fontawesome.com/36ce20503e.js" crossorigin="anonymous"></script>
+
     <!-- step1. import the module -->
     <script src="https://unpkg.com/@jyunzn/zz"></script>
   </head>
@@ -83,38 +103,59 @@ npm install @jyunzn/zz
       // step3. call zz function and mount into the container
       //        If you want to use custom options,
       //        you can set it in the first parameter in the zz function
-      zz(/* {
+      zz(/*{
 
-      // Set options, such as
+      // - Set options
 
-      cmz_quan: 3,
-      cmz_ynames: { 2020: '貳零貳零'},
-      cmz_wMarks: { sun: 'Sunday', mon: 'Monday' },
-      cmz_mNames: { 1: '一月', 2: '二月' },
+      cmz_quan: 12,
+      cmz_ymStart: '2020-01',
+      cmz_ymPos: 'my',
+      cmz_yNames: { 2020: '貳零貳零', 2021: '貳零貳壹' },
+      cmz_mNames: { 
+        1: 'Jan', 2: 'Feb', 3: 'Mar', 4: 'Apr', 
+        5: 'May', 6: 'Jun', 7: 'Jul', 8: 'Aug',
+        9: 'Sep', 10: 'Oct', 11: 'Nov', 12: 'Dec'
+      },
+      cmz_wMarks: {
+        sun: 'S',
+        mon: 'M',
+        tue: 'T',
+        wed: 'W',
+        thu: 'T',
+        fri: 'F',
+        sat: 'S'
+      },
       cmz_swBtns: [
-        ['i', { direct: 'prev', step: 3 }, '<<<'],
-        ['i', { direct: 'prev', step: 1, style: 'color: pink;'}, '<'],
-        ['i', { direct: 'next', step: 1, class: 'next-btn' }, '>'],
-        ['div', { direct: 'next', step: 3 }, [
+        ['i', { direct: 'prev', step: 12, class: "prev-btn p_btn12" }, '<<<<<'],
+        // use font-awesome
+        ['i', { direct: 'prev', step: 1, class: "prev-btn p_btn1 fas fa-angle-left" }, ''],
+        ['i', { direct: 'next', step: 1, class: "next-btn n_btn1" }, '>'],
+        // set children, children can always be nested!
+        ['i', { direct: 'next', step: 12, class: "next-btn n_btn12" }, [
           '>',
-          ['i', { style: { color: 'salmon' }}, '>'],
-          ['i', { style: { color: 'teal' }}, '>'],
-          ['i', { style: { backgroundColor: 'skyblue' }}, '>']
+          ['i', { style: 'color: pink;' }, '>'],
+          ['span', {}, [
+            '>',
+            ['i', { style: { color: 'skyblue' }}, '>']
+          ]]
         ]]
       ],
+      
+      cls_year: 'my-year',
+      cls_month: 'my-month',
 
-      // Set life cycle functions, for example
+      // - Set life cycle
 
-      onPreved: () => { console.log('onPreved') }, 
-      onNexted: () => { console.log('onNexted') },
+      onPreved: (...args) => { console.log('onPreved', ...args) }, 
+      onNexted: (...args) => { console.log('onNexted', ...args) },
 
-      onBeforeCreate: () => { console.log('onBeforeCreate') },
-      onCreated: () => { console.log('onCreated') },
-      onBeforeMount: () => { console.log('onBeforeMount') },
-      onMounted: () => { console.log('onMounted') },
-      onBeforeUnmount: () => { console.log('onBeforeUnmount') },
-      onUnmounted: () => { console.log('onUnmounted') },
-    } */).mount(".caledar");
+      onBeforeCreate: (...args) => { console.log('onBeforeCreate', ...args) },
+      onCreated: (...args) => { console.log('onCreated', ...args) },
+      onBeforeMount: (...args) => { console.log('onBeforeMount', ...args) },
+      onMounted: (...args) => { console.log('onMounted', ...args) },
+      onBeforeUnmount: (...args) => { console.log('onBeforeUnmount', ...args) },
+      onUnmounted: (...args) => { console.log('onUnmounted', ...args) }
+    }*/).mount(".caledar");
     </script>
   </body>
 </html>

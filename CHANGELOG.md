@@ -1,4 +1,8 @@
-# CHANGELOG
+## [v0.0.0-alpha.3](https://github.com/jyunzn/zz/compare/v0.0.0-alpha.2...v0.0.0-alpha.3) ( November 18, 2020 )
+
+### refactor
+
+- **examples:** Extract the style of the default class ([0a204be](https://github.com/jyunzn/zz/commit/0a204be))
 
 ## [v0.0.0-alpha.2](https://github.com/jyunzn/zz/compare/v0.0.0-alpha.1...v0.0.0-alpha.2) ( November 18, 2020 )
 
