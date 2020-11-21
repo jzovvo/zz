@@ -374,7 +374,7 @@ function resetYMDs(ymDs, diffM, doms) {
 }
 
 // step2. move
-function resetBeMoveDoms(needResetDoms, diffMs, opts, ymDs, cbs) {
+function resetBeMoveDoms(needResetDoms, diffMs, opts, ymDs, cbs, otherCbParams) {
   const { children } = needResetDoms
   const len = children.length
   for (let i = 0; i < len; i++) {
@@ -384,16 +384,16 @@ function resetBeMoveDoms(needResetDoms, diffMs, opts, ymDs, cbs) {
     const contentDs = resetBeMoveDomsContent(mWD, diffM, opts)
     resetYMDs(ymDs, diffM, { ...headerDs, ...contentDs, mWD })
     callCallbacks(cbs.onBeforeDomBeAssyAtResetDom, null, {
-      mWD, diffM, headerDs, contentDs, opts, ymDs, needResetDoms, diffMs
+      mWD, diffM, headerDs, contentDs, opts, ymDs, needResetDoms, diffMs, ...otherCbParams
     })
     assyContent(contentDs)
     callCallbacks(cbs.onDomBeAssyAtResetDom, null, {
-      mWD, diffM, headerDs, contentDs, opts, ymDs, needResetDoms, diffMs
+      mWD, diffM, headerDs, contentDs, opts, ymDs, needResetDoms, diffMs, ...otherCbParams
     })
   }
 }
 
-function moveDoms(doms, diffMs, direct, opts, cbs) {
+function moveDoms(doms, diffMs, direct, opts, cbs, otherCbParams) {
   const { ymCD, ymDs } = doms
   const { quan } = opts
   const len = diffMs.length
@@ -412,11 +412,11 @@ function moveDoms(doms, diffMs, direct, opts, cbs) {
   }
 
   callCallbacks(cbs.onBeforeDomBeReset, null, {
-    doms, diffMs, direct, opts, needResetDoms, unNeedResetDoms
+    doms, diffMs, direct, opts, needResetDoms, unNeedResetDoms, ...otherCbParams
   })
-  resetBeMoveDoms(needResetDoms, diffMs, opts, ymDs, cbs)
+  resetBeMoveDoms(needResetDoms, diffMs, opts, ymDs, cbs, otherCbParams)
   callCallbacks(cbs.onDomBeReseted, null, {
-    doms, diffMs, direct, opts, needResetDoms, unNeedResetDoms
+    doms, diffMs, direct, opts, needResetDoms, unNeedResetDoms, ...otherCbParams
   })
 
   if (len < quan) {
@@ -490,7 +490,7 @@ export function goBack(step, doms, opts, ymData, pointers, cbs) {
     diffMs = handleStepBigger(step, quan, pointers, ymCache, todayInfo, subMonth)
   }
 
-  moveDoms(doms, diffMs, 'prev', opts, cbs)
+  moveDoms(doms, diffMs, 'prev', opts, cbs, { step, ymData, pointers })
   callCallbacks(cbs.onPreved, null, { doms, diffMs, opts, step, ymData, pointers })
 }
 
@@ -508,6 +508,6 @@ export function goNext(step, doms, opts, ymData, pointers, cbs) {
     diffMs = handleStepBigger(step, quan, pointers, ymCache, todayInfo, addMonth)
   }
 
-  moveDoms(doms, diffMs, 'next', opts, cbs)
+  moveDoms(doms, diffMs, 'next', opts, cbs, { step, ymData, pointers })
   callCallbacks(cbs.onNexted, null, { doms, diffMs, opts, step, ymData, pointers })
 }
