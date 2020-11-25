@@ -1,3 +1,9 @@
+## [v0.0.1](https://github.com/jyunzn/zz/compare/v0.0.0-alpha.3...v0.0.1) ( November 25, 2020 )
+
+### fix
+
+- **src/zz/switch:** Forgot to expose some parameters in the hook used internally
+
 ## [v0.0.0-alpha.3](https://github.com/jyunzn/zz/compare/v0.0.0-alpha.2...v0.0.0-alpha.3) ( November 18, 2020 )
 
 ### refactor
