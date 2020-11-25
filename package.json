@@ -1,6 +1,6 @@
 {
   "name": "@jyunzn/zz",
-  "version": "0.0.0-alpha.3",
+  "version": "0.0.1",
   "description": "This is a calendar library",
   "main": "dist/zz.min.js",
   "jsdelivr": "dist/zz.min.js",

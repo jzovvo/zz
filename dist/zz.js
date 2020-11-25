@@ -1,5 +1,5 @@
 /*!
- * zz v0.0.0-alpha.3
+ * zz v0.0.1
  * (c) 2020 Jyunzn
  * Released under the MIT License
  */
@@ -2251,7 +2251,7 @@ function resetYMDs(ymDs, diffM, doms) {
 } // step2. move
 
 
-function resetBeMoveDoms(needResetDoms, diffMs, opts, ymDs, cbs) {
+function resetBeMoveDoms(needResetDoms, diffMs, opts, ymDs, cbs, otherCbParams) {
   var children = needResetDoms.children;
   var len = children.length;
 
@@ -2263,7 +2263,7 @@ function resetBeMoveDoms(needResetDoms, diffMs, opts, ymDs, cbs) {
     resetYMDs(ymDs, diffM, _objectSpread(_objectSpread(_objectSpread({}, headerDs), contentDs), {}, {
       mWD: mWD
     }));
-    (0,_utils__WEBPACK_IMPORTED_MODULE_2__.callCallbacks)(cbs.onBeforeDomBeAssyAtResetDom, null, {
+    (0,_utils__WEBPACK_IMPORTED_MODULE_2__.callCallbacks)(cbs.onBeforeDomBeAssyAtResetDom, null, _objectSpread({
       mWD: mWD,
       diffM: diffM,
       headerDs: headerDs,
@@ -2272,9 +2272,9 @@ function resetBeMoveDoms(needResetDoms, diffMs, opts, ymDs, cbs) {
       ymDs: ymDs,
       needResetDoms: needResetDoms,
       diffMs: diffMs
-    });
+    }, otherCbParams));
     (0,_assembly__WEBPACK_IMPORTED_MODULE_4__.assyContent)(contentDs);
-    (0,_utils__WEBPACK_IMPORTED_MODULE_2__.callCallbacks)(cbs.onDomBeAssyAtResetDom, null, {
+    (0,_utils__WEBPACK_IMPORTED_MODULE_2__.callCallbacks)(cbs.onDomBeAssyAtResetDom, null, _objectSpread({
       mWD: mWD,
       diffM: diffM,
       headerDs: headerDs,
@@ -2283,11 +2283,11 @@ function resetBeMoveDoms(needResetDoms, diffMs, opts, ymDs, cbs) {
       ymDs: ymDs,
       needResetDoms: needResetDoms,
       diffMs: diffMs
-    });
+    }, otherCbParams));
   }
 }
 
-function moveDoms(doms, diffMs, direct, opts, cbs) {
+function moveDoms(doms, diffMs, direct, opts, cbs, otherCbParams) {
   var ymCD = doms.ymCD,
       ymDs = doms.ymDs;
   var quan = opts.quan;
@@ -2308,23 +2308,23 @@ function moveDoms(doms, diffMs, direct, opts, cbs) {
     needResetDoms = fg;
   }
 
-  (0,_utils__WEBPACK_IMPORTED_MODULE_2__.callCallbacks)(cbs.onBeforeDomBeReset, null, {
+  (0,_utils__WEBPACK_IMPORTED_MODULE_2__.callCallbacks)(cbs.onBeforeDomBeReset, null, _objectSpread({
     doms: doms,
     diffMs: diffMs,
     direct: direct,
     opts: opts,
     needResetDoms: needResetDoms,
     unNeedResetDoms: unNeedResetDoms
-  });
-  resetBeMoveDoms(needResetDoms, diffMs, opts, ymDs, cbs);
-  (0,_utils__WEBPACK_IMPORTED_MODULE_2__.callCallbacks)(cbs.onDomBeReseted, null, {
+  }, otherCbParams));
+  resetBeMoveDoms(needResetDoms, diffMs, opts, ymDs, cbs, otherCbParams);
+  (0,_utils__WEBPACK_IMPORTED_MODULE_2__.callCallbacks)(cbs.onDomBeReseted, null, _objectSpread({
     doms: doms,
     diffMs: diffMs,
     direct: direct,
     opts: opts,
     needResetDoms: needResetDoms,
     unNeedResetDoms: unNeedResetDoms
-  });
+  }, otherCbParams));
 
   if (len < quan) {
     if (direct === 'prev') {
@@ -2425,7 +2425,11 @@ function goBack(step, doms, opts, ymData, pointers, cbs) {
     diffMs = handleStepBigger(step, quan, pointers, ymCache, todayInfo, _utils__WEBPACK_IMPORTED_MODULE_2__.subMonth);
   }
 
-  moveDoms(doms, diffMs, 'prev', opts, cbs);
+  moveDoms(doms, diffMs, 'prev', opts, cbs, {
+    step: step,
+    ymData: ymData,
+    pointers: pointers
+  });
   (0,_utils__WEBPACK_IMPORTED_MODULE_2__.callCallbacks)(cbs.onPreved, null, {
     doms: doms,
     diffMs: diffMs,
@@ -2454,7 +2458,11 @@ function goNext(step, doms, opts, ymData, pointers, cbs) {
     diffMs = handleStepBigger(step, quan, pointers, ymCache, todayInfo, _utils__WEBPACK_IMPORTED_MODULE_2__.addMonth);
   }
 
-  moveDoms(doms, diffMs, 'next', opts, cbs);
+  moveDoms(doms, diffMs, 'next', opts, cbs, {
+    step: step,
+    ymData: ymData,
+    pointers: pointers
+  });
   (0,_utils__WEBPACK_IMPORTED_MODULE_2__.callCallbacks)(cbs.onNexted, null, {
     doms: doms,
     diffMs: diffMs,
