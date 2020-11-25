@@ -58,10 +58,16 @@ npm install @jyunzn/zz
   <script src="https://unpkg.com/@jyunzn/zz"></script>
   ```
 
-- **jsdelivr**
+- **jsdelivr ( npm )**
 
   ```html
   <script src="https://cdn.jsdelivr.net/npm/@jyunzn/zz"></script>
+  ```
+
+- **jsdelivr ( gh )**
+
+  ```html
+  <script src="https://cdn.jsdelivr.net/gh/jyunzn/zz/dist/zz.min.js"></script>
   ```
 
 ## Example
@@ -600,10 +606,10 @@ zz.use(plugin);
 
 ### plugin list
 
-| plugin                                     | description                                                                            |
-| ------------------------------------------ | -------------------------------------------------------------------------------------- |
-| [zzsper](https://github.com/jyunzn/zzsper) | **ZZ Single Picker**, provides the function of <strong>selecting a single day</strong> |
-| zzrper                                     | **ZZ Range Picker**, not yet 😩😩😩                                                    |
+| plugin                                     | description                                                                                |
+| ------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| [zzsper](https://github.com/jyunzn/zzsper) | **ZZ Single Picker**, provides the function of <strong>selecting a single day</strong>     |
+| [zzrper](https://github.com/jyunzn/zzrper) | **ZZ Range Picker**, provides the function of <strong>selecting the range of days</strong> |
 
 ## License
 
